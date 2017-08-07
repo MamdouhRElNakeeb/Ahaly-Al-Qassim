@@ -17,7 +17,6 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
     }
     
     override func viewDidLoad() {
@@ -43,7 +42,6 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         cell.label.font = UIFont(name: "GE SS Two", size: 18)
         cell.label.text = titles[indexPath.row]
-//        cell.selectionStyle = .none
         cell.icon.image = UIImage(named: images[indexPath.row])
         
         
@@ -64,56 +62,36 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: MapLocations())
             sideMenuViewController?.hideMenuViewController()
             
-            /*
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "map") as! MapLocations
-            self.navigationController?.pushViewController(newViewController, animated: true)
-            */
-            
             break
             
         case 1:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/blog/wp-admin/profile.php"
-                ])
+            
             break
             
         case 2:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/blog/about-us-2"
-                ])
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: VideoVC())
+            sideMenuViewController?.hideMenuViewController()
+            
             break
             
         case 3:
-            UIApplication.tryURL(urls: [
-                "http://zinakamoura.com"
-                ])
+            
             break
             
         case 4:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/podcast"
-                ])
+            
             break
             
         case 5:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/blog"
-                ])
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
+            sideMenuViewController?.hideMenuViewController()
+            
             break
             
         case 6:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/library"
-                ])
+            
             break
             
-        case 7:
-            UIApplication.tryURL(urls: [
-                "https://ma33a.com/school"
-                ])
-            break
-       
         default:
             break
         }

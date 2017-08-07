@@ -30,6 +30,11 @@ class LandingVC: UIViewController, UIGestureRecognizerDelegate {
         
         initViews()
         
+        
+        let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
+        whiteNB.backgroundColor = UIColor.white
+        self.view.addSubview(whiteNB)
+        
     }
     
     func initViews(){
@@ -48,20 +53,19 @@ class LandingVC: UIViewController, UIGestureRecognizerDelegate {
         galleryVBtn.addBorder(view: galleryVBtn)
         videosVBtn.addBorder(view: videosVBtn)
         
-        let aboutBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
+        let aboutBtnTap = UITapGestureRecognizer(target: self, action: #selector(openAbout))
         aboutBtnTap.delegate = self
         aboutVBtn.addGestureRecognizer(aboutBtnTap)
         
         
         let newsBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
         newsBtnTap.delegate = self
-        newsVBtn.addGestureRecognizer(newsBtnTap)
+        //newsVBtn.addGestureRecognizer(newsBtnTap)
         
         
         let timelineBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
         timelineBtnTap.delegate = self
-        timelineVBtn.addGestureRecognizer(timelineBtnTap)
-        
+        //timelineVBtn.addGestureRecognizer(timelineBtnTap)
         
         let mapBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
         mapBtnTap.delegate = self
@@ -70,10 +74,10 @@ class LandingVC: UIViewController, UIGestureRecognizerDelegate {
         
         let galleryBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
         galleryBtnTap.delegate = self
-        galleryVBtn.addGestureRecognizer(galleryBtnTap)
+        //galleryVBtn.addGestureRecognizer(galleryBtnTap)
         
         
-        let videosBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMap))
+        let videosBtnTap = UITapGestureRecognizer(target: self, action: #selector(openVideos))
         videosBtnTap.delegate = self
         videosVBtn.addGestureRecognizer(videosBtnTap)
         
@@ -84,6 +88,24 @@ class LandingVC: UIViewController, UIGestureRecognizerDelegate {
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "map") as! MapLocations
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
-
     
+    func openAbout() {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "about") as! AboutVC
+        self.navigationController?.pushViewController(newViewController, animated: true)
+
+    }
+    
+    func openVideos() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "videos") as! VideoVC
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+
+
 }
+
+
+
+

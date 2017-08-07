@@ -24,7 +24,7 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b1f-zd-Vye">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landing_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Uct-oY-xbl">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -55,6 +55,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fAn-R8-SGO">
                                         <rect key="frame" x="0.0" y="17" width="115" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.68235294120000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الأخبار" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh5-xg-Rjc">
                                         <rect key="frame" x="0.0" y="86" width="115" height="21"/>
@@ -72,6 +73,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timelineIcon" translatesAutoresizingMaskIntoConstraints="NO" id="k2W-AO-5rm">
                                         <rect key="frame" x="0.0" y="17" width="115" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.68235294120000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الجدول" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-3J-3nh">
                                         <rect key="frame" x="0.0" y="86" width="115" height="21"/>
@@ -107,6 +109,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="galleryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="htM-Ja-vRF">
                                         <rect key="frame" x="0.0" y="17" width="115" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.68235294120000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="صور" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw7-0P-2rh">
                                         <rect key="frame" x="0.0" y="86" width="115" height="21"/>
@@ -124,6 +127,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="videosIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Xvs-IV-scX">
                                         <rect key="frame" x="0.0" y="17" width="115" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.68235294120000001" blue="0.41568627450000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="فيديوهات" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8n-Kj-xdA">
                                         <rect key="frame" x="0.0" y="86" width="115" height="21"/>
@@ -167,12 +171,12 @@
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="aboutVBtn" destination="dZ2-F4-VdQ" id="Nm2-Sb-3p6"/>
-                        <outlet property="galleryVBtn" destination="CfA-3G-7Se" id="eGX-xf-Q50"/>
-                        <outlet property="mapVBtn" destination="yEm-yi-W2u" id="jxc-SM-jr3"/>
-                        <outlet property="newsVBtn" destination="xbW-Wd-E5y" id="qkT-Uo-4Ik"/>
-                        <outlet property="timelineVBtn" destination="W0e-8x-Bz2" id="YD7-TQ-U0n"/>
-                        <outlet property="videosVBtn" destination="l2u-bM-Ww7" id="2rd-cx-TYZ"/>
+                        <outlet property="aboutVBtn" destination="dZ2-F4-VdQ" id="RwT-n9-4WA"/>
+                        <outlet property="galleryVBtn" destination="CfA-3G-7Se" id="Kpy-Sh-mgE"/>
+                        <outlet property="mapVBtn" destination="yEm-yi-W2u" id="qLA-8w-gWz"/>
+                        <outlet property="newsVBtn" destination="xbW-Wd-E5y" id="ZtB-WQ-cxs"/>
+                        <outlet property="timelineVBtn" destination="W0e-8x-Bz2" id="Pdo-8c-zYJ"/>
+                        <outlet property="videosVBtn" destination="l2u-bM-Ww7" id="v1k-r3-Yfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -190,6 +194,13 @@
                     <view key="view" contentMode="scaleToFill" id="ogc-rl-4Nw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsu-XR-UA1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="LXP-71-Qim"/>
@@ -197,6 +208,151 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTC-QH-zEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="877.60000000000002" y="772.26386806596713"/>
+        </scene>
+        <!--AboutVC-->
+        <scene sceneID="K97-2G-htf">
+            <objects>
+                <viewController storyboardIdentifier="about" id="Qov-ZX-4oQ" customClass="AboutVC" customModule="Hegg" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kVQ-rf-nA8"/>
+                        <viewControllerLayoutGuide type="bottom" id="hpl-mE-TNG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nMi-8i-bkh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6qZ-Xb-P1B">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-3w-1Xv">
+                                <rect key="frame" x="0.0" y="242" width="375" height="425"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNs-Ga-vaK">
+                                        <rect key="frame" x="22" y="8" width="331" height="129"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج</string>
+                                        <fontDescription key="fontDescription" name="GESSTwoMedium-Medium" family="GE SS Two" pointSize="15"/>
+                                        <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="kNs-Ga-vaK"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-VA-gcB">
+                                <rect key="frame" x="247" y="28" width="82" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="من نحن ؟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bN1-SM-DAI">
+                                <rect key="frame" x="16" y="161" width="343" height="41"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GESSTwoMedium-Medium" family="GE SS Two" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تطبيق الحج" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86b-IF-Gst">
+                                <rect key="frame" x="247" y="115" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GESSTwoMedium-Medium" family="GE SS Two" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxW-6O-IxV">
+                                <rect key="frame" x="46" y="159" width="283" height="1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDW-xU-1T8">
+                                <rect key="frame" x="46" y="201" width="283" height="1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wC7-3w-1Xv"/>
+                                <exclude reference="6eQ-VA-gcB"/>
+                                <exclude reference="bN1-SM-DAI"/>
+                                <exclude reference="86b-IF-Gst"/>
+                                <exclude reference="DxW-6O-IxV"/>
+                                <exclude reference="mDW-xU-1T8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="tlJ-3j-zs4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8eh-hw-W7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709.5999999999999" y="772.26386806596713"/>
+        </scene>
+        <!--VideoVC-->
+        <scene sceneID="lhq-UD-Y4E">
+            <objects>
+                <viewController storyboardIdentifier="videos" id="qqt-XY-GmR" customClass="VideoVC" customModule="Hegg" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X9q-bv-htt"/>
+                        <viewControllerLayoutGuide type="bottom" id="xmw-MH-Fqo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TZk-UD-1gX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QPC-jy-5h8">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VIdeoCell" rowHeight="200" id="Gcx-aw-orX" customClass="VideoCell" customModule="Hegg" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gcx-aw-orX" id="i3N-7M-3OV">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ka3baImg" translatesAutoresizingMaskIntoConstraints="NO" id="LA5-Hi-8QT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradientGreen" translatesAutoresizingMaskIntoConstraints="NO" id="QsC-DG-A2Y">
+                                                    <rect key="frame" x="0.0" y="-1" width="343" height="201"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="playBtn" translatesAutoresizingMaskIntoConstraints="NO" id="6me-7e-gTC">
+                                                    <rect key="frame" x="0.0" y="66" width="343" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="فيديو" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAE-R6-Ff1">
+                                                    <rect key="frame" x="13" y="149" width="317" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <fontDescription key="fontDescription" name="GESSTwoMedium-Medium" family="GE SS Two" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="QPC-jy-5h8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="nQ5-I6-r29"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pAU-4S-xgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2548" y="772.26386806596713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FUi-h0-TUg">
@@ -504,13 +660,53 @@
             </objects>
             <point key="canvasLocation" x="878" y="-12"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dp6-qU-Glh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5oV-jo-urc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZLo-K5-r5H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qov-ZX-4oQ" kind="relationship" relationship="rootViewController" id="c4z-mT-NxZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zN6-2L-ibN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="-12"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D7y-cY-Su6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9hd-ff-ZlM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ryn-ny-H80">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qqt-XY-GmR" kind="relationship" relationship="rootViewController" id="POX-B4-iai"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBz-Iu-USg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2548" y="-12"/>
+        </scene>
     </scenes>
     <resources>
         <image name="aboutIcon" width="128" height="128"/>
         <image name="galleryIcon" width="128" height="128"/>
+        <image name="gradientGreen" width="1000" height="450"/>
+        <image name="ka3baImg" width="1000" height="450"/>
         <image name="landing_bg" width="1080" height="1920"/>
+        <image name="logo_icon" width="540" height="540"/>
         <image name="mapIcon" width="512" height="512"/>
         <image name="newsIcon" width="128" height="128"/>
+        <image name="playBtn" width="128" height="128"/>
         <image name="splash_bg" width="1080" height="1920"/>
         <image name="timelineIcon" width="128" height="128"/>
         <image name="videosIcon" width="128" height="128"/>

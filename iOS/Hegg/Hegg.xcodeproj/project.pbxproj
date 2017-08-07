@@ -14,10 +14,16 @@
 		3353A66B1F2B68F300CCDDA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3353A6691F2B68F300CCDDA3 /* LaunchScreen.storyboard */; };
 		335431C61F2D1FA800E1E0AA /* SideMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335431C51F2D1FA800E1E0AA /* SideMenuTVCell.swift */; };
 		335431C71F2D364E00E1E0AA /* GESS.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33D7E87E1F2B853500880D25 /* GESS.otf */; };
+		337FF5E51F31110A0070A74B /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FF5E41F31110A0070A74B /* AboutVC.swift */; };
 		33DB29721F2B9DA700ADD657 /* SSASideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB29711F2B9DA700ADD657 /* SSASideMenu.swift */; };
 		33DB29741F2B9DD800ADD657 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB29731F2B9DD800ADD657 /* SideMenuVC.swift */; };
 		33DB29761F2B9E2800ADD657 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB29751F2B9E2800ADD657 /* Extensions.swift */; };
 		33DB29791F2BD95300ADD657 /* MapLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DB29781F2BD95300ADD657 /* MapLocations.swift */; };
+		33F4A76C1F3512A500869C33 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A76B1F3512A500869C33 /* VideoCell.swift */; };
+		33F4A76E1F351A2000869C33 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A76D1F351A2000869C33 /* VideoVC.swift */; };
+		33F4A7711F35318E00869C33 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A7701F35318E00869C33 /* Video.swift */; };
+		33F4A7731F3532C700869C33 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A7721F3532C700869C33 /* Utils.swift */; };
+		33F4A7751F3558CD00869C33 /* LandingMenuBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A7741F3558CD00869C33 /* LandingMenuBtn.swift */; };
 		F18BBD9CD973971910A6E580 /* Pods_Hegg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9460C0F60D97BCBC44C95E40 /* Pods_Hegg.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,11 +37,17 @@
 		3353A66A1F2B68F300CCDDA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3353A66C1F2B68F300CCDDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		335431C51F2D1FA800E1E0AA /* SideMenuTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTVCell.swift; sourceTree = "<group>"; };
+		337FF5E41F31110A0070A74B /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		33D7E87E1F2B853500880D25 /* GESS.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GESS.otf; sourceTree = "<group>"; };
 		33DB29711F2B9DA700ADD657 /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
 		33DB29731F2B9DD800ADD657 /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		33DB29751F2B9E2800ADD657 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		33DB29781F2BD95300ADD657 /* MapLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocations.swift; sourceTree = "<group>"; };
+		33F4A76B1F3512A500869C33 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		33F4A76D1F351A2000869C33 /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		33F4A7701F35318E00869C33 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		33F4A7721F3532C700869C33 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		33F4A7741F3558CD00869C33 /* LandingMenuBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingMenuBtn.swift; sourceTree = "<group>"; };
 		9460C0F60D97BCBC44C95E40 /* Pods_Hegg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hegg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C653A3C85D7C82963E51EFD3 /* Pods-Hegg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hegg.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hegg/Pods-Hegg.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,10 +85,13 @@
 		3353A65F1F2B68F300CCDDA3 /* Hegg */ = {
 			isa = PBXGroup;
 			children = (
+				33F4A76F1F35318300869C33 /* Objects */,
+				33F4A76A1F35128700869C33 /* Cells */,
 				33DB29771F2BD93800ADD657 /* Controllers */,
 				33DB29701F2B9D6D00ADD657 /* SideMenu */,
 				33D7E87D1F2B852000880D25 /* assets */,
 				33DB29751F2B9E2800ADD657 /* Extensions.swift */,
+				33F4A7721F3532C700869C33 /* Utils.swift */,
 				3353A6601F2B68F300CCDDA3 /* AppDelegate.swift */,
 				3353A6641F2B68F300CCDDA3 /* Main.storyboard */,
 				3353A6671F2B68F300CCDDA3 /* Assets.xcassets */,
@@ -99,7 +114,6 @@
 			children = (
 				33DB29711F2B9DA700ADD657 /* SSASideMenu.swift */,
 				33DB29731F2B9DD800ADD657 /* SideMenuVC.swift */,
-				335431C51F2D1FA800E1E0AA /* SideMenuTVCell.swift */,
 			);
 			name = SideMenu;
 			sourceTree = "<group>";
@@ -109,8 +123,28 @@
 			children = (
 				3353A6621F2B68F300CCDDA3 /* LandingVC.swift */,
 				33DB29781F2BD95300ADD657 /* MapLocations.swift */,
+				337FF5E41F31110A0070A74B /* AboutVC.swift */,
+				33F4A76D1F351A2000869C33 /* VideoVC.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		33F4A76A1F35128700869C33 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				335431C51F2D1FA800E1E0AA /* SideMenuTVCell.swift */,
+				33F4A76B1F3512A500869C33 /* VideoCell.swift */,
+				33F4A7741F3558CD00869C33 /* LandingMenuBtn.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		33F4A76F1F35318300869C33 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				33F4A7701F35318E00869C33 /* Video.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		A53DE7EC3DE2AA59E6F04FCB /* Frameworks */ = {
@@ -165,6 +199,7 @@
 				TargetAttributes = {
 					3353A65C1F2B68F300CCDDA3 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 8R4R3LC68P;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -254,13 +289,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F4A7751F3558CD00869C33 /* LandingMenuBtn.swift in Sources */,
+				33F4A76E1F351A2000869C33 /* VideoVC.swift in Sources */,
 				33DB29761F2B9E2800ADD657 /* Extensions.swift in Sources */,
 				33DB29721F2B9DA700ADD657 /* SSASideMenu.swift in Sources */,
+				33F4A76C1F3512A500869C33 /* VideoCell.swift in Sources */,
 				3353A6631F2B68F300CCDDA3 /* LandingVC.swift in Sources */,
 				3353A6611F2B68F300CCDDA3 /* AppDelegate.swift in Sources */,
+				337FF5E51F31110A0070A74B /* AboutVC.swift in Sources */,
+				33F4A7711F35318E00869C33 /* Video.swift in Sources */,
 				33DB29741F2B9DD800ADD657 /* SideMenuVC.swift in Sources */,
 				335431C61F2D1FA800E1E0AA /* SideMenuTVCell.swift in Sources */,
 				33DB29791F2BD95300ADD657 /* MapLocations.swift in Sources */,
+				33F4A7731F3532C700869C33 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,10 +425,14 @@
 			baseConfigurationReference = 1015C02AAD749255FAD1D8A8 /* Pods-Hegg.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8R4R3LC68P;
 				INFOPLIST_FILE = Hegg/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nakeeb.Hegg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.heggqassem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -397,10 +442,14 @@
 			baseConfigurationReference = C653A3C85D7C82963E51EFD3 /* Pods-Hegg.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8R4R3LC68P;
 				INFOPLIST_FILE = Hegg/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.nakeeb.Hegg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.heggqassem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
