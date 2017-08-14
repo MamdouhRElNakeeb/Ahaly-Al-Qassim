@@ -47,15 +47,45 @@ class access{
     }
 
     // insert appointment into database
-    public function makeAppointment($name, $gender, $service, $date, $email, $mobile, $message){
+    public function contactMsg($id, $subject, $msg){
 
-        $sql = "INSERT INTO Appointment SET name=?, gender=?, service=?, date=?, email=?, mobile=?, message=?";
+        $sql = "INSERT INTO contact_msgs SET userID=?, subject=?, msg=?";
         $statement = $this->conn->prepare($sql);
         if(!$statement){
             throw new Exception($statement->error);
         }
         // bind 8 parameters of type string to be placed in $sql command
-        $statement->bind_param("sssssss", $name, $gender, $service, $date, $email, $mobile, $message);
+        $statement->bind_param("sss", $id, $subject, $msg);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
+    public function chairOrder($id){
+
+        $sql = "INSERT INTO chair_orders SET userID=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("s", $id);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
+    public function fatwaRequest($question){
+
+        $sql = "INSERT INTO fatawy SET question=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("s", $question);
         $returnValue = $statement->execute();
         return $returnValue;
 
