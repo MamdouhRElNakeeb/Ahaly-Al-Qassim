@@ -11,6 +11,7 @@ target 'Hegg' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacesAPI'
-
+  pod 'CollieGallery'
+  pod 'YouTubePlayer'
 
 end

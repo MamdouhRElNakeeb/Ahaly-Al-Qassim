@@ -13,6 +13,8 @@ import Alamofire
 
 class MapLocations: UIViewController {
     
+    var camp: Camp = Camp()
+    
     let lat = 21.4151678
     let lon = 39.8789227
     let campName = "مخيم شركة أهالى القصيم"
@@ -24,8 +26,14 @@ class MapLocations: UIViewController {
     
     var locationStart = CLLocation()
     var locationEnd = CLLocation()
-
     
+    var currentLocation = CLLocation()
+    
+    var campLocations = Array<CLLocation>()
+    
+    var spinner = UIActivityIndicatorView()
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +53,7 @@ class MapLocations: UIViewController {
             locationManager.startMonitoringSignificantLocationChanges()
         }
         
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 18.0)
+        let camera = GMSCameraPosition.camera(withLatitude: camp.latitude, longitude: camp.longitude, zoom: 12)
         googleMaps = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         googleMaps.settings.compassButton = true
         googleMaps.settings.scrollGestures = true
@@ -55,19 +63,21 @@ class MapLocations: UIViewController {
         self.googleMaps.delegate = self
         self.googleMaps.isMyLocationEnabled = true
         self.googleMaps.settings.myLocationButton = true
-        
+                
         // Creates a marker in the center of the map.
+        
         let marker = GMSMarker()
         let markerIcon = UIImage(named: "markerIcon")!.withRenderingMode(.alwaysTemplate)
         let markerIconView = UIImageView(image: markerIcon)
-        markerIconView.tintColor = UIColor(red: 74/255, green: 174/255, blue: 106/255, alpha: 1)
+        markerIconView.tintColor = UIColor.primaryColor()
         markerIconView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         marker.iconView = markerIconView
         
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        marker.title = campName
+        marker.position = CLLocationCoordinate2D(latitude: camp.latitude, longitude: camp.longitude)
+        marker.title = camp.name
+        marker.snippet = camp.description
         marker.map = googleMaps
-        
+ 
         googleMaps.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
         self.view.addSubview(googleMaps)
@@ -89,8 +99,6 @@ class MapLocations: UIViewController {
         whiteNB.backgroundColor = UIColor.white
         self.view.addSubview(whiteNB)
         
-        //self.drawPath(startLocation: CLLocation(latitude: 30.0796008, longitude: 31.3372481), endLocation: CLLocation(latitude: lat, longitude: lon))
-
     }
     
     //MARK: - this is function for create direction path, from start location to desination location
@@ -175,20 +183,27 @@ extension MapLocations: GMSMapViewDelegate ,  CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = manager.location
+        currentLocation = manager.location!
         
         //		let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
         
-        let campLocation = CLLocation(latitude: lat, longitude: lon)
         
         //createMarker(titleMarker: "Lokasi Tujuan", iconMarker: #imageLiteral(resourceName: "mapspin") , latitude: locationTujuan.coordinate.latitude, longitude: locationTujuan.coordinate.longitude)
         
         //createMarker(titleMarker: "Lokasi Aku", iconMarker: #imageLiteral(resourceName: "mapspin") , latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
         
-        drawPath(startLocation: location!, endLocation: campLocation)
         
         //		self.googleMaps?.animate(to: camera)
         //self.locationManager.stopUpdatingLocation()
+        
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        
+        
+        let campLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        
+        drawPath(startLocation: currentLocation, endLocation: campLocation)
         
     }
     

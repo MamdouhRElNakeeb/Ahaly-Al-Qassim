@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class AboutVC: UIViewController {
+class AboutVC: UIViewController, UIGestureRecognizerDelegate {
 
     let lat = 21.4151678
     let lon = 39.8789227
@@ -118,7 +118,7 @@ class AboutVC: UIViewController {
         fbBtnTitle.font = UIFont(name: fbBtnTitle.font.fontName, size: 14)
         fbBtnTitle.text = "Facebook"
         
-        let fbIcon = UIImage(named: "twitter_icon")!.withRenderingMode(.alwaysTemplate)
+        let fbIcon = UIImage(named: "fbIcon")!.withRenderingMode(.alwaysTemplate)
         let fbBtnImg = UIImageView(image: fbIcon)
         
         fbBtnImg.tintColor = UIColor.white
@@ -141,24 +141,30 @@ class AboutVC: UIViewController {
         twtBtnImg.contentMode = .scaleAspectFit
 
         
-        let siteVCenter = CGPoint(x: (self.view.frame.width / 6 * 5) - 10, y: 0)
-        let siteBtnTitle = UILabel(frame: CGRect(origin: siteVCenter, size: viewSize))
+        //let siteVCenter = CGPoint(x: (self.view.frame.width / 6 * 5) - 10, y: 0)
+        let siteBtnTitle = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: smHeight))
         siteBtnTitle.textColor = UIColor.white
+        siteBtnTitle.textAlignment = .center
         siteBtnTitle.font = UIFont(name: siteBtnTitle.font.fontName, size: 14)
-        siteBtnTitle.text = "Hegg.com"
+        siteBtnTitle.text = "www.ahalyalqassim.com"
 
         let siteIcon = UIImage(named: "siteIcon")!.withRenderingMode(.alwaysTemplate)
         let siteBtnImg = UIImageView(image: siteIcon)
 
         siteBtnImg.tintColor = UIColor.white
-        siteBtnImg.frame = CGRect(x: siteBtnTitle.frame.minX - 40, y: 0, width: 25, height: smHeight)
+        siteBtnImg.frame = CGRect(x: 20, y: 0, width: 25, height: smHeight)
         siteBtnImg.contentMode = .scaleAspectFit
         
+        let siteBtnTap = UITapGestureRecognizer(target: self, action: #selector(openSite))
+        siteBtnTap.delegate = self
+        greenV.addGestureRecognizer(siteBtnTap)
         
-        greenV.addSubview(fbBtnImg)
-        greenV.addSubview(fbBtnTitle)
-        greenV.addSubview(twtBtnImg)
-        greenV.addSubview(twtBtnTitle)
+        
+        
+        //greenV.addSubview(fbBtnImg)
+        //greenV.addSubview(fbBtnTitle)
+        //greenV.addSubview(twtBtnImg)
+        //greenV.addSubview(twtBtnTitle)
         greenV.addSubview(siteBtnImg)
         greenV.addSubview(siteBtnTitle)
         
@@ -177,13 +183,19 @@ class AboutVC: UIViewController {
         descLbl.numberOfLines = 8
         descLbl.textAlignment = .center
         descLbl.font = UIFont(name: "GE SS Two", size: 15)
-        descLbl.text = "تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج تطبيق الحج لإرشاد الحجاج"
+        descLbl.text = "شركة حملة أهالي القصيم إحدى الشركات التي تقدم أرقى الخدمات لضيوف الرحمن، لحجاج الداخل من مواطنين ومقيمين وبأسعار منافسة" + "\n" + "تقديم خدمة متكاملة لحجاج بيت الله الحرام والتفاني في ذلك ليتفرغ الحاج لعبادته ويؤديها كما أراد الله سبحانه وتعالى وعلى منهج المصطفي صلى الله عليه و سلم"
 
         whiteView.addSubview(descLbl)
         
         self.view.addSubview(whiteView)
     }
     
+    func openSite (){
+        
+        UIApplication.tryURL(urls: [
+            "http://ahalyalqassim.com"
+            ])
+    }
     
 }
 

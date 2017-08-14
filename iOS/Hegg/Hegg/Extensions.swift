@@ -53,9 +53,85 @@ extension UIApplication {
     }
 }
 
+extension UIColor {
+    
+    class func primaryColor() -> UIColor {
+     
+        return UIColor(red: 74/255, green: 174/255, blue: 106/255, alpha: 1)
+    }
+    
+    class func secondryColor() -> UIColor {
+        
+        return UIColor(red: 184/255, green: 209/255, blue: 36/255, alpha: 1)
+    }
+}
 extension UIView{
 
-    func addBorder(view: UIView){
+    class Circle{
+        
+        var radius: CGFloat
+        var fill: UIColor
+        var stroke: UIColor
+        
+        init(radius: CGFloat, fill: UIColor, stroke: UIColor){
+            
+            self.radius = radius
+            self.fill = fill
+            self.stroke = stroke
+        }
+        
+        func getCircle() -> UIView{
+            
+            let circle = UIView()
+            circle.frame = CGRect(x: 0, y: 0, width: self.radius * 2, height: self.radius * 2)
+            circle.layer.cornerRadius = radius
+            circle.backgroundColor = fill
+            circle.addBorder(view: circle, stroke: stroke, fill: fill, radius: Int(radius), width: 4)
+            return circle
+        }
+        
+    }
+    
+    class Triangle{
+        
+        var height: CGFloat
+        var width: CGFloat
+        
+        init(height: CGFloat, width: CGFloat) {
+            
+            self.width = width
+            self.height = height
+        }
+        
+        func getTriangle() -> UIView {
+            
+            // Create Path
+            let bezierPath = UIBezierPath()
+            
+            // Draw Points
+            bezierPath.move(to: CGPoint(x: 0, y: height))
+            bezierPath.addLine(to: CGPoint(x: width, y: height))
+            bezierPath.addLine(to: CGPoint(x: width, y: 0))
+            bezierPath.addLine(to: CGPoint(x: 0, y: height))
+            bezierPath.close()
+            
+            // Apply Color
+            UIColor.green.setFill()
+            bezierPath.fill()
+            
+            // Mask to Path
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.path = bezierPath.cgPath
+            
+            let triangle = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            triangle.layer.mask = shapeLayer
+            
+            return triangle
+        }
+        
+    }
+    
+    func addBorder(view: UIView, stroke: UIColor, fill: UIColor, radius: Int, width: CGFloat){
         // Add border
         let borderLayer = CAShapeLayer()
         
@@ -63,11 +139,11 @@ extension UIView{
         rectShape.bounds = view.frame
         rectShape.position = view.center
         
-        rectShape.path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.bottomRight , .topLeft, .topRight, .bottomLeft], cornerRadii: CGSize(width: 0, height: 0)).cgPath
+        rectShape.path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.bottomRight , .topLeft, .topRight, .bottomLeft], cornerRadii: CGSize(width: radius, height: radius)).cgPath
         borderLayer.path = rectShape.path // Reuse the Bezier path
-        borderLayer.fillColor = UIColor.clear.cgColor
-        borderLayer.strokeColor = UIColor.gray.cgColor
-        borderLayer.lineWidth = 3
+        borderLayer.fillColor = fill.cgColor
+        borderLayer.strokeColor = stroke.cgColor
+        borderLayer.lineWidth = width
         borderLayer.frame = view.bounds
         view.layer.addSublayer(borderLayer)
         view.layer.mask = rectShape

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class VideoCell: UITableViewCell {
 
@@ -55,7 +56,7 @@ class VideoCell: UITableViewCell {
         roundedView.addSubview(videoLbl)
         roundedView.addSubview(playBtn)
         
-        roundedView.dropShadow2()
+        //roundedView.dropShadow2()
         
         self.contentView.addSubview(roundedView)
         

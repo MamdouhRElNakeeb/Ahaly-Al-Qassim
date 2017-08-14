@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.0)
+  - CollieGallery (0.5.0)
   - GoogleMaps (2.3.1):
     - GoogleMaps/Maps (= 2.3.1)
   - GoogleMaps/Base (2.3.1)
@@ -14,22 +15,27 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
+  - CollieGallery
   - GoogleMaps
   - GooglePlaces
   - GooglePlacesAPI
   - SDWebImage (~> 3.8)
+  - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  CollieGallery: edc3ea6d0800a6248dfbbbefd866242bbea7e236
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
   GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
   GooglePlacesAPI: 3baf1c78cf94cc97fc5677c613f55d00b37a7d3c
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: ce6db93d00958c4673febb66d1d0e504b577f4da
+PODFILE CHECKSUM: fc7e0e3459c577d5e6419ab40f14c7963b731d47
 
 COCOAPODS: 1.2.1

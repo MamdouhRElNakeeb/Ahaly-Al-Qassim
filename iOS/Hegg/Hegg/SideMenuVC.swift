@@ -12,6 +12,23 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //let landingVC = LandingVC()
     
+    let titles: [String] = [
+        "الرئيسية",
+        "مواقعنا بالمشاعر",
+       "أماكن التجمع",
+        "الجدول الزمنى",
+        "فيديوهات",
+        "صور",
+        "الأخبار",
+        "طلب كرسى",
+        "طلب فتوى",
+        "الفتاوى",
+        "عن الشركة",
+        "إتصل بنا"]
+    
+    let images: [String] = ["homeIcon", "markerIcon", "mapIcon", "timelineIcon", "videosIcon", "galleryIcon", "newsIcon", "chairIcon", "fatwaIcon", "fatwasIcon", "aboutIcon", "contactIcon"]
+    
+    
     @IBOutlet weak var sideMenuTV: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,12 +40,12 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         super.viewDidLoad()
         sideMenuTV.separatorStyle = .none
-        sideMenuTV.frame = CGRect(x: 0, y: (self.view.frame.size.height - 54 * 7) / 2.0, width: self.view.frame.size.width, height: 54 * 7)
+        sideMenuTV.frame = CGRect(x: 0, y: (self.view.frame.size.height - 54 * CGFloat(titles.count)) / 2.0, width: self.view.frame.size.width, height: 54 * CGFloat(titles.count))
         sideMenuTV.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
         sideMenuTV.isOpaque = false
         sideMenuTV.backgroundColor = UIColor.clear
         sideMenuTV.backgroundView = nil
-        sideMenuTV.bounces = false
+        //sideMenuTV.bounces = false
         
     }
     
@@ -36,13 +53,11 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SideMenuTVCell
         
-        let titles: [String] = ["الخريطة", "الجدول الزمنى", "فيديوهات", "صور", "الأخبار", "عن الشركة", "إتصل بنا"]
-        
-        let images: [String] = ["mapIcon", "timelineIcon", "videosIcon", "galleryIcon", "newsIcon", "aboutIcon", "contactIcon"]
         
         cell.label.font = UIFont(name: "GE SS Two", size: 18)
         cell.label.text = titles[indexPath.row]
         cell.icon.image = UIImage(named: images[indexPath.row])
+        cell.icon.tintColor = UIColor.white
         
         
         return cell
@@ -59,46 +74,92 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: MapLocations())
+            
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: LandingVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 1:
             
-            break
+            let mapListVC = MapListVC()
+            mapListVC.mapListType = true
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: mapListVC)
+            sideMenuViewController?.hideMenuViewController()
             
+            break
+        
         case 2:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: VideoVC())
+            
+            let mapListVC = MapListVC()
+            mapListVC.mapListType = false
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: mapListVC)
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 3:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: TimelineVC())
+            sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 4:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: VideoVC())
+            sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 5:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: GalleryVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 6:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: NewsVC())
+   	         sideMenuViewController?.hideMenuViewController()
             
             break
             
+        case 7:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChairOrderVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        case 8:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatwaVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        case 9:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatawyAnswersVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        case 10:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        case 11:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ContactVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        
         default:
             break
         }
     }
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
