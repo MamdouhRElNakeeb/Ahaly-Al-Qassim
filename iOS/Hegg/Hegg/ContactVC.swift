@@ -44,8 +44,8 @@ class ContactVC: UIViewController {
     func initViews(){
         
         let bgImg = UIImageView(image: UIImage(named: "landing_bg"))
-        bgImg.contentMode = .scaleAspectFill
         bgImg.frame = self.view.frame
+        bgImg.contentMode = .scaleToFill
         
         self.view.addSubview(bgImg)
 

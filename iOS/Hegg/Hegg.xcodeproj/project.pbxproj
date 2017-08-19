@@ -78,6 +78,7 @@
 		336A79F21F3DD90F00E29AD9 /* FatwaDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatwaDetails.swift; sourceTree = "<group>"; };
 		336E21921F374D7A0056DDC6 /* Camp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camp.swift; sourceTree = "<group>"; };
 		337FF5E41F31110A0070A74B /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		33A9C6801F45C26D0024D196 /* Hegg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hegg.entitlements; sourceTree = "<group>"; };
 		33D7E87E1F2B853500880D25 /* GESS.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GESS.otf; sourceTree = "<group>"; };
 		33DB29711F2B9DA700ADD657 /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
 		33DB29731F2B9DD800ADD657 /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		3353A65F1F2B68F300CCDDA3 /* Hegg */ = {
 			isa = PBXGroup;
 			children = (
+				33A9C6801F45C26D0024D196 /* Hegg.entitlements */,
 				33F4A76F1F35318300869C33 /* Objects */,
 				33F4A76A1F35128700869C33 /* Cells */,
 				33DB29771F2BD93800ADD657 /* Controllers */,
@@ -269,6 +271,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 8R4R3LC68P;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -518,10 +525,11 @@
 				INFOPLIST_FILE = Hegg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.heggqassem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.ahalyalqassem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -535,10 +543,11 @@
 				INFOPLIST_FILE = Hegg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.heggqassem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peekssolutions.ahalyalqassem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
