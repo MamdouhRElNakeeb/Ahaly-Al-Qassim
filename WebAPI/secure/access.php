@@ -55,6 +55,21 @@ class access{
     }
 
     // insert appointment into database
+    public function sendMsg($id, $msg){
+
+        $sql = "INSERT INTO chat_msgs SET fromUserID=?, msg=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("ss", $id, $msg);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
     public function contactMsg($id, $subject, $msg){
 
         $sql = "INSERT INTO contact_msgs SET userID=?, subject=?, msg=?";
