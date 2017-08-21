@@ -46,6 +46,14 @@ class access{
 
     }
 
+    public function getChat($userID){
+
+        $sql = "SELECT * FROM chat_msgs WHERE fromUserID=$userID OR toUserID=$userID";
+        $result = $this->conn->query($sql);
+        return $result;
+
+    }
+
     // insert appointment into database
     public function contactMsg($id, $subject, $msg){
 

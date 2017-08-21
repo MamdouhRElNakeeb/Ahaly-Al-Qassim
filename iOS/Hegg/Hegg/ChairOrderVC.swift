@@ -39,6 +39,11 @@ class ChairOrderVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(SSASideMenu.presentRightMenuViewController))
         
         initViews()
+        
+        let hideKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        hideKeyboard.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(hideKeyboard)
+        
     }
     
     func initViews(){
@@ -80,8 +85,21 @@ class ChairOrderVC: UIViewController {
         let whiteV = UIView(frame: CGRect(x: 0, y: whiteTriangle.frame.maxY, width: self.view.frame.width, height: self.view.frame.height - whiteTriangle.frame.maxY))
         whiteV.backgroundColor = UIColor.white
         
+        let subjectV = UIView(frame: CGRect(x: margin * 3 / 2, y: (self.view.frame.height / 2) - 22, width: self.view.frame.width - margin * 3, height: 44))
+        subjectV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         
-        let sendBtn = UIButton(frame: CGRect(x: margin * 3 / 2, y: (self.view.frame.height / 2) - 22, width: self.view.frame.width - margin * 3, height: 44))
+        subjectTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: subjectV.frame.width - margin / 2, height: 44))
+        
+        subjectTF.placeholder = "رقم الجوال"
+        subjectTF.keyboardType = .phonePad
+        subjectTF.textAlignment = .right
+        subjectTF.font = UIFont(name: "GE SS Two", size: 14)
+        subjectTF.textColor = UIColor.black
+        subjectTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        subjectV.addSubview(subjectTF)
+        
+        let sendBtn = UIButton(frame: CGRect(x: margin * 3 / 2, y: subjectV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
         
         sendBtn.setTitle("طلب كرسى", for: .normal)
         sendBtn.titleLabel?.font = UIFont(name: "GE SS Two", size: 14)
@@ -97,6 +115,7 @@ class ChairOrderVC: UIViewController {
         self.view.addSubview(logoIV)
         self.view.addSubview(contactLbl)
         self.view.addSubview(contactIconIV)
+        self.view.addSubview(subjectV)
         self.view.addSubview(sendBtn)
         
     }
@@ -134,29 +153,13 @@ class ChairOrderVC: UIViewController {
     
     func sendMsg(){
         
-        if !UserDefaults.standard.bool(forKey: "logged") {
-            let alert = UIAlertController(title: "مرحباً بك", message: "أدخل الرقم التعريفى الخاص بك", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addTextField { (textField : UITextField!) -> Void in
-                textField.placeholder = "User ID"
-                textField.keyboardType = .numberPad
-            }
-            
-            alert.addAction(UIAlertAction(title: "إدخال", style: UIAlertActionStyle.default, handler: {
-                (action: UIAlertAction) -> Void in
-                
-                self.userIDTF = alert.textFields![0].text!
-                print(self.userIDTF)
-                
-                let userDefaults = UserDefaults.standard
-                userDefaults.set(self.userIDTF, forKey: "userID")
-                userDefaults.set(true, forKey: "logged")
-                userDefaults.synchronize()
-                
-                
-            }))
-            
+        if (subjectTF.text?.isEmpty)! {
+            let alert = UIAlertController(title: "تنبيه", message: "برجاء ملئ جميع البيانات", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "حاول مرة أخرى", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            return
         }
+
         
         displaySpinner()
         
@@ -172,13 +175,11 @@ class ChairOrderVC: UIViewController {
         
         
         let parameters: Parameters=[
-            "userID": UserDefaults.standard.value(forKey: "userID") ?? 0
+            "userID": subjectTF.text!
         ]
         
         print(parameters)
         
-        let url = contactMsgUrl
-            + "?userID=" + "\(UserDefaults.standard.integer(forKey: "userID"))"
         
         Alamofire.request(contactMsgUrl, method: .post, parameters: parameters)
             .responseJSON{

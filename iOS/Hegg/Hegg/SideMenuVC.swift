@@ -10,7 +10,6 @@ import UIKit
 
 class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //let landingVC = LandingVC()
     
     let titles: [String] = [
         "الرئيسية",
@@ -20,13 +19,15 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         "فيديوهات",
         "صور",
         "الأخبار",
+     "دليل الحاج",
         "طلب كرسى",
         "طلب فتوى",
         "الفتاوى",
         "عن الشركة",
+  "دردشة",
         "إتصل بنا"]
     
-    let images: [String] = ["homeIcon", "markerIcon", "mapIcon", "timelineIcon", "videosIcon", "galleryIcon", "newsIcon", "chairIcon", "fatwaIcon", "fatwasIcon", "aboutIcon", "contactIcon"]
+    let images: [String] = ["homeIcon", "markerIcon", "mapIcon", "timelineIcon", "videosIcon", "galleryIcon", "newsIcon", "guideIcon", "chairIcon", "fatwaIcon", "fatwasIcon", "aboutIcon", "contactIcon", "contactIcon"]
     
     
     @IBOutlet weak var sideMenuTV: UITableView!
@@ -40,11 +41,12 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         super.viewDidLoad()
         sideMenuTV.separatorStyle = .none
-        sideMenuTV.frame = CGRect(x: 0, y: (self.view.frame.size.height - 54 * CGFloat(titles.count)) / 2.0, width: self.view.frame.size.width, height: 54 * CGFloat(titles.count))
+        sideMenuTV.frame = CGRect(x: 0, y: 0 /*(self.view.frame.size.height - 54 * CGFloat(titles.count)) / 2.0*/, width: self.view.frame.size.width, height: self.view.frame.height /*54 * CGFloat(titles.count)*/)
         sideMenuTV.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
         sideMenuTV.isOpaque = false
         sideMenuTV.backgroundColor = UIColor.clear
         sideMenuTV.backgroundView = nil
+        sideMenuTV.isScrollEnabled = true
         //sideMenuTV.bounces = false
         
     }
@@ -123,35 +125,46 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             break
             
         case 7:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChairOrderVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: GuideVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 8:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatwaVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChairOrderVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 9:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatawyAnswersVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatwaVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 10:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatawyAnswersVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
         case 11:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ContactVC())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
+        case 12:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChatVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
+            
+        case 13:
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ContactVC())
+            sideMenuViewController?.hideMenuViewController()
+            
+            break
         
         default:
             break

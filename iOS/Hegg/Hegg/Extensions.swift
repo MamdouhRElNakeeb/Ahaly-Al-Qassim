@@ -65,6 +65,29 @@ extension UIColor {
         return UIColor(red: 184/255, green: 209/255, blue: 36/255, alpha: 1)
     }
 }
+
+extension UIFont {
+    
+    static func noc_mediumSystemFont(ofSize fontSize: CGFloat) -> UIFont {
+        var font: UIFont
+        if #available(iOS 8.2, *) {
+            font = UIFont.systemFont(ofSize: fontSize, weight: UIFontWeightMedium)
+        } else {
+            font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)!
+        }
+        return font
+    }
+    
+}
+extension NSAttributedString {
+    
+    func noc_sizeThatFits(size: CGSize) -> CGSize {
+        let rect = boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading ], context: nil)
+        return rect.integral.size
+    }
+    
+}
+
 extension UIView{
 
     class Circle{

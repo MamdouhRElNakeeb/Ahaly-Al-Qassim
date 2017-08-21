@@ -13,5 +13,8 @@ target 'Hegg' do
   pod 'GooglePlacesAPI'
   pod 'CollieGallery'
   pod 'YouTubePlayer'
+  pod 'NoChat', '~> 0.3'
+  pod 'NOCProtoKit', :path => '../'
+  
 
 end

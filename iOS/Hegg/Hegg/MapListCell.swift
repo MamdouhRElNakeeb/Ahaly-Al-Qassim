@@ -23,11 +23,11 @@ class MapListCell: UITableViewCell {
         let viewWidth = Int(UIScreen.main.bounds.width)
         let cellHeight = 100
         
-        icon.frame = CGRect(x: viewWidth - 40, y: 0, width: 30, height: cellHeight)
+        icon.frame = CGRect(x: viewWidth - 70, y: 0, width: 60, height: cellHeight)
         icon.image = UIImage(named: "logo_icon")
         icon.contentMode = .scaleAspectFit
         
-        titleLbl.frame = CGRect(x: 10, y: 0, width: viewWidth - 60, height: cellHeight)
+        titleLbl.frame = CGRect(x: 10, y: 0, width: viewWidth - 90, height: cellHeight)
         titleLbl.textAlignment = .right
         titleLbl.font = UIFont(name: "GE SS Two", size: 17)
         titleLbl.textColor = UIColor.black
@@ -35,10 +35,6 @@ class MapListCell: UITableViewCell {
         
         contentView.addSubview(icon)
         contentView.addSubview(titleLbl)
-        
-        
-        
-        //self.contentView.dropShadow2()
         
     }
     
