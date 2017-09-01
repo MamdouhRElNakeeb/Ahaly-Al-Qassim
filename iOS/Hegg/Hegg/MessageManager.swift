@@ -40,14 +40,14 @@ class MessageManager: NSObject, NOCClientDelegate {
         } else {
             var arr = [Message]()
             
-            let msg = Message()
+            let msg = Message(text: "")
             msg.msgType = "Date"
             arr.append(msg)
             
             if chatId == "bot_89757" {
-                let msg = Message()
+                let msg = Message(text: "")
                 msg.msgType = "System"
-                msg.text = "Welcome to Gothons From Planet Percal #25! Please input `/start` to play!"
+                msg.text = "أهلا بك فى خدمة الدردشة"
                 arr.append(msg)
             }
             
@@ -93,10 +93,10 @@ class MessageManager: NSObject, NOCClientDelegate {
             return;
         }
         
-        let msg = Message()
+        let msg = Message(text: text)
         msg.senderId = senderId
         msg.msgType = type
-        msg.text = text
+        //msg.text = text
         msg.isOutgoing = false
         
         let chatId = chatType + "_" + senderId

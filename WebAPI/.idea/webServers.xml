@@ -2,8 +2,16 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="50c35268-8e97-4fb7-967d-116241a151ef" name="Nakeeb" url="http://hegg.nakeeb.me">
+      <webServer id="50c35268-8e97-4fb7-967d-116241a151ef" name="Hegg_qassim" url="http://hegg.nakeeb.me">
         <fileTransfer host="hegg.nakeeb.me" port="21" rootFolder="/hegg.nakeeb.me/API/qassem">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="99fedac4-b417-4f68-84a6-ee3fe25d2f48" name="Hegg_Huda" url="http://hegg.nakeeb.me">
+        <fileTransfer host="hegg.nakeeb.me" port="21" rootFolder="/hegg.nakeeb.me/API/hoda">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

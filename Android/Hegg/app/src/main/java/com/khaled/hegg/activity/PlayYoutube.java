@@ -25,6 +25,7 @@ public class PlayYoutube extends YouTubeBaseActivity {
         ButterKnife.bind(this);
         String url=getIntent().getExtras().getString("url");
 
+
         openVideo(url);
     }
 
@@ -32,7 +33,8 @@ public class PlayYoutube extends YouTubeBaseActivity {
         youTubePlayerView.initialize(getResources().getString(GOOGLE_API_KEY), new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.cueVideo(url);
+
+                youTubePlayer.loadVideo(url);
             }
 
             @Override

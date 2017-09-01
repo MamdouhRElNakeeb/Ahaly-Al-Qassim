@@ -1,6 +1,10 @@
 package com.khaled.hegg.activity;
 
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
@@ -9,12 +13,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.bumptech.glide.Glide;
+import com.khaled.hegg.Hegg;
 import com.khaled.hegg.R;
 import com.khaled.hegg.model.ServerResponse;
 import com.khaled.hegg.utils.Url;
@@ -34,6 +38,14 @@ public class RequestFatwaActivity extends AppCompatActivity {
     ImageView iv_ic ;
     @BindView(R.id.et_fatwa)
     EditText et_fatwa ;
+    @BindView(R.id.til_email)
+    TextInputLayout til_email ;
+    @BindView(R.id.til_fatwa)
+    TextInputLayout til_question ;
+    @BindView(R.id.til_name)
+    TextInputLayout til_name ;
+    @BindView(R.id.til_phone)
+    TextInputLayout til_phone ;
 
 
 
@@ -97,32 +109,106 @@ public class RequestFatwaActivity extends AppCompatActivity {
     @OnClick(R.id.btn_request_fatwa)
     public void requestFatwa(View view){
         Log.e("Tag","REQUEST FATWA");
-        AndroidNetworking.get(Url.FATWA_REQUEST)
-                .addQueryParameter("question",et_fatwa.getText().toString() )
-                .build()
-                .getAsObject(ServerResponse.class, new ParsedRequestListener<ServerResponse>() {
-                    @Override
-                    public void onResponse(ServerResponse response) {
-                        if(!response.isError()){
-                            Log.e("Tag","SUCCESS FATWA");
 
-                            Toast.makeText(RequestFatwaActivity.this,"تم ارسال سؤالك",Toast.LENGTH_LONG).show();
+        String question =til_question.getEditText().getText().toString();
+        String name =til_name.getEditText().getText().toString();
+        String phone =til_phone.getEditText().getText().toString();
+        String email = til_email.getEditText().getText().toString();
+
+        if(Hegg.checkEmpty(question) && Hegg.checkEmpty(name) && Hegg.checkEmpty(phone) && Hegg.checkEmpty(email)){
+            AndroidNetworking.get(Url.FATWA_REQUEST)
+                    .addQueryParameter("question",til_question.getEditText().getText().toString())
+                    .addQueryParameter("name",til_name.getEditText().getText().toString())
+                    .addQueryParameter("phone",til_phone.getEditText().getText().toString())
+                    .addQueryParameter("email",til_email.getEditText().getText().toString())
+                    .build()
+                    .getAsObject(ServerResponse.class, new ParsedRequestListener<ServerResponse>() {
+                        @Override
+                        public void onResponse(ServerResponse response) {
+                            if(!response.isError()){
+                                Log.e("Tag","SUCCESS FATWA");
+
+                                AlertDialog.Builder builder;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    builder = new AlertDialog.Builder(RequestFatwaActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                                } else {
+                                    builder = new AlertDialog.Builder(RequestFatwaActivity.this);
+                                }
+                                builder.setTitle("تم ارسال طلبك ")
+                                        .setMessage("سيتم الرد على سؤالك قريبا")
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                // continue with delete
+                                                finish();
+                                            }
+                                        })
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
+                            }
+                            else{
+                                AlertDialog.Builder builder;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    builder = new AlertDialog.Builder(RequestFatwaActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                                } else {
+                                    builder = new AlertDialog.Builder(RequestFatwaActivity.this);
+                                }
+                                builder.setTitle("مشكلة")
+                                        .setMessage("يوجد مشكلة حاول ارسال سؤالك مرة اخرى")
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                // continue with delete
+                                            }
+                                        })
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
+                                Log.e("Tag","ERROR FATWA");
+                            }
 
                         }
-                        else{
-                            Toast.makeText(RequestFatwaActivity.this,"There's is a problem",Toast.LENGTH_LONG).show();
-                            Log.e("Tag","ERROR FATWA");
 
+                        @Override
+                        public void onError(ANError anError) {
+                            Log.e("Tag",anError.toString());
+
+                            AlertDialog.Builder builder;
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                builder = new AlertDialog.Builder(RequestFatwaActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                            } else {
+                                builder = new AlertDialog.Builder(RequestFatwaActivity.this);
+                            }
+                            builder.setTitle("مشكلة")
+                                    .setMessage("يوجد مشكلة حاول ارسال سؤالك مرة اخرى")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // continue with delete
+                                            finish();
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();                    }
+                    });
+        }
+        else{
+            AlertDialog.Builder builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder = new AlertDialog.Builder(RequestFatwaActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+            } else {
+                builder = new AlertDialog.Builder(RequestFatwaActivity.this);
+            }
+            builder.setTitle("مشكلة")
+                    .setMessage("من فضلك لا تترك خانات البيانات فارغة")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // continue with delete
+                            finish();
                         }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+            }
+        }
 
-                    }
 
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.e("Tag",anError.toString());
 
-                        Toast.makeText(RequestFatwaActivity.this,anError.toString(),Toast.LENGTH_LONG).show();
-                    }
-                });
-    }
+
 }

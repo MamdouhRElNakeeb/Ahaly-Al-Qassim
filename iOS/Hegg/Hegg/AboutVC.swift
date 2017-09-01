@@ -13,7 +13,7 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
 
     let lat = 21.4151678
     let lon = 39.8789227
-    let campName = "شركة أهالى القصيم"
+    let campName = "شركة أهالي القصيم"
     let fbUrl = "https://www.facebook.com/peekssolutions/"
     let twtUrl = "https://twitter.com/peekssolutions"
     let siteUrl = "http://peekssolutions.com"
@@ -110,7 +110,7 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
         let viewSize = CGSize(width: self.view.frame.width / 3, height: smHeight)
         
         let greenV = UIView(frame: CGRect(x: 0, y: 210, width: self.view.frame.width, height: smHeight))
-        greenV.backgroundColor = UIColor(red: 74/255, green: 174/255, blue: 106/255, alpha: 1)
+        greenV.backgroundColor = UIColor.primaryColor()
         
         let fbVCenter = CGPoint(x: (self.view.frame.width / 6) - 10, y: 0)
         let fbBtnTitle = UILabel(frame: CGRect(origin: fbVCenter, size: viewSize))
@@ -159,25 +159,53 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
         siteBtnTap.delegate = self
         greenV.addGestureRecognizer(siteBtnTap)
         
+        let greenV1 = UIView(frame: CGRect(x: 0, y: greenV.frame.maxY, width: self.view.frame.width, height: smHeight))
+        greenV1.backgroundColor = UIColor.primaryColor()
         
+        let mobBtnTitle = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: smHeight))
+        mobBtnTitle.textColor = UIColor.white
+        mobBtnTitle.textAlignment = .right
+        mobBtnTitle.font = UIFont(name: siteBtnTitle.font.fontName, size: 14)
+        mobBtnTitle.text = "0555145983 / "
         
-        //greenV.addSubview(fbBtnImg)
-        //greenV.addSubview(fbBtnTitle)
-        //greenV.addSubview(twtBtnImg)
-        //greenV.addSubview(twtBtnTitle)
+        let mobBtnTitle2 = UILabel(frame: CGRect(x: mobBtnTitle.frame.maxX, y: 0, width: self.view.frame.width / 2, height: smHeight))
+        mobBtnTitle2.textColor = UIColor.white
+        mobBtnTitle2.textAlignment = .left
+        mobBtnTitle2.font = UIFont(name: siteBtnTitle.font.fontName, size: 14)
+        mobBtnTitle2.text = " 0163263091"
+        
+        let mobIcon = UIImage(named: "contactIcon")!.withRenderingMode(.alwaysTemplate)
+        let mobBtnImg = UIImageView(image: mobIcon)
+        
+        mobBtnImg.tintColor = UIColor.white
+        mobBtnImg.frame = CGRect(x: 20, y: 0, width: 25, height: smHeight)
+        mobBtnImg.contentMode = .scaleAspectFit
+        
+        let mobBtnTap = UITapGestureRecognizer(target: self, action: #selector(openMob))
+        mobBtnTap.delegate = self
+        let mobBtnTap2 = UITapGestureRecognizer(target: self, action: #selector(openMob2))
+        mobBtnTap2.delegate = self
+        mobBtnTitle.addGestureRecognizer(mobBtnTap)
+        mobBtnTitle2.addGestureRecognizer(mobBtnTap2)
+        
+        greenV1.addSubview(mobBtnImg)
+        greenV1.addSubview(mobBtnTitle)
+        greenV1.addSubview(mobBtnTitle2)
+        
         greenV.addSubview(siteBtnImg)
         greenV.addSubview(siteBtnTitle)
         
         self.view.addSubview(greenV)
+        self.view.addSubview(greenV1)
         
     }
     
     func initDesc(){
         
-        let whiteView = UIView(frame: CGRect(x: 0, y: 210, width: self.view.frame.width, height: self.view.frame.height - 210))
+        let whiteView = UIView(frame: CGRect(x: 0, y: 290, width: self.view.frame.width, height: self.view.frame.height - 290))
         whiteView.backgroundColor = UIColor.white
         
-        let descLbl = UILabel(frame: CGRect(x: 20, y: 0, width: self.view.frame.width - 40, height: whiteView.frame.height - 250))
+        let descLbl = UILabel(frame: CGRect(x: 20, y: 0, width: self.view.frame.width - 40, height: whiteView.frame.height - 190))
         
         descLbl.textColor = UIColor.lightGray
         descLbl.numberOfLines = 8
@@ -194,6 +222,18 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
         
         UIApplication.tryURL(urls: [
             "http://ahalyalqassim.com"
+            ])
+    }
+    
+    func openMob(){
+        UIApplication.tryURL(urls: [
+            "tel:0555145983"
+            ])
+    }
+    
+    func openMob2(){
+        UIApplication.tryURL(urls: [
+            "tel:0163263091"
             ])
     }
     

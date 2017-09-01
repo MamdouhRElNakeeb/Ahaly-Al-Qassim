@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDEEA816D0F991C6B33BB04815149802"
+               BlueprintIdentifier = "56AF3739BB53E74125BE1D395A8C6660"
                BuildableName = "Pods_Hegg.framework"
                BlueprintName = "Pods-Hegg"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BDEEA816D0F991C6B33BB04815149802"
+            BlueprintIdentifier = "56AF3739BB53E74125BE1D395A8C6660"
             BuildableName = "Pods_Hegg.framework"
             BlueprintName = "Pods-Hegg"
             ReferencedContainer = "container:Pods.xcodeproj">

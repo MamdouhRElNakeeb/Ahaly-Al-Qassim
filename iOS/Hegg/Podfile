@@ -7,7 +7,7 @@ target 'Hegg' do
 
   # Pods for Hegg
   pod 'Alamofire', '~> 4.3'
-  pod 'SDWebImage', '~>3.8'
+  pod 'SDWebImage/WebP', '~>3.8'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacesAPI'
@@ -15,6 +15,11 @@ target 'Hegg' do
   pod 'YouTubePlayer'
   pod 'NoChat', '~> 0.3'
   pod 'NOCProtoKit', :path => '../'
+  pod 'YYText'
+  pod 'HPGrowingTextView'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'SKPhotoBrowser'
   
 
 end

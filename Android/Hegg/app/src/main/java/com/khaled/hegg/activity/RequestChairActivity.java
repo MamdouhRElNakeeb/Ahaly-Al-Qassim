@@ -1,13 +1,16 @@
 package com.khaled.hegg.activity;
 
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -31,7 +34,14 @@ public class RequestChairActivity extends AppCompatActivity {
     ImageView iv_background ;
     ImageView iv_logo ;
     ImageView iv_ic ;
-
+    @BindView(R.id.et_phone)
+    EditText et_phone ;
+    @BindView(R.id.et_name)
+    EditText et_name ;
+    @BindView(R.id.et_chairs_no)
+    EditText et_chair_no;
+    @BindView(R.id.et_time)
+    EditText et_time ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,23 +103,71 @@ public class RequestChairActivity extends AppCompatActivity {
     @OnClick(R.id.btn_request_chair)
     public void requestChair(View view){
         AndroidNetworking.get(Url.CHAIR_REQUEST)
+                .addQueryParameter("userID",et_phone.getText().toString())
+                .addQueryParameter("name",et_name.getText().toString())
+                .addQueryParameter("chair_no",et_chair_no.getText().toString())
+                .addQueryParameter("time",et_time.getText().toString())
                 .build()
                 .getAsObject(ServerResponse.class, new ParsedRequestListener<ServerResponse>() {
                     @Override
                     public void onResponse(ServerResponse response) {
                         if(!response.isError()){
-                            Toast.makeText(RequestChairActivity.this,"تم ارسال سؤالك",Toast.LENGTH_LONG).show();
-
+                            AlertDialog.Builder builder;
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                builder = new AlertDialog.Builder(RequestChairActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                            } else {
+                                builder = new AlertDialog.Builder(RequestChairActivity.this);
+                            }
+                            builder.setTitle("تم ارسال طلبك ")
+                                    .setMessage("سيتم الاتصال بك قريبا")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // continue with delete
+                                            finish();
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
                         }
                         else{
-                            Toast.makeText(RequestChairActivity.this,"There's is a problem",Toast.LENGTH_LONG).show();
-                        }
+                            AlertDialog.Builder builder;
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                builder = new AlertDialog.Builder(RequestChairActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                            } else {
+                                builder = new AlertDialog.Builder(RequestChairActivity.this);
+                            }
+                            builder.setTitle("مشكلة")
+                                    .setMessage("حاول ارسال طلبك مرة")
+                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // continue with delete
+                                            finish();
+                                        }
+                                    })
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();                        }
 
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(RequestChairActivity.this,anError.toString(),Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            builder = new AlertDialog.Builder(RequestChairActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                        } else {
+                            builder = new AlertDialog.Builder(RequestChairActivity.this);
+                        }
+                        builder.setTitle("مشكلة")
+                                .setMessage("حاول ارسال طلبك مرة")
+                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // continue with delete
+                                        finish();
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
                     }
                 });
     }

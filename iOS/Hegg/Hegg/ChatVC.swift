@@ -8,6 +8,7 @@
 
 import UIKit
 import NoChat
+import Alamofire
 
 class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageManagerDelegate, TGChatInputTextPanelDelegate, TGTextMessageCellDelegate {
     
@@ -18,6 +19,8 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
     var layoutQueue = DispatchQueue(label: "com.little2s.nochat-example.tg.layout", qos: DispatchQoS(qosClass: .default, relativePriority: 0))
     
     let chat: Chat
+    
+    var userIDTF = String()
     
     // MARK: Overrides
     
@@ -43,18 +46,17 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
         collectionView?.register(TGSystemMessageCell.self, forCellWithReuseIdentifier: TGSystemMessageCell.reuseIdentifier())
     }
     
-    /*
     init(chat: Chat) {
         self.chat = chat
         super.init(nibName: nil, bundle: nil)
         messageManager.addDelegate(self)
         registerContentSizeCategoryDidChangeNotification()
-        setupNavigationItems()
+        //setupNavigationItems()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }*/
+    }
     
     deinit {
         messageManager.removeDelegate(self)
@@ -64,16 +66,61 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView?.image = UIImage(named: "TGWallpaper")!
-        navigationController?.delegate = self
+        //navigationController?.delegate = self
+        
+        let image = UIImage(named:"sideMenuIcon")?.withRenderingMode(.alwaysTemplate)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(SSASideMenu.presentRightMenuViewController))
+        
+        self.navigationItem.leftBarButtonItem?.title = "رجوع"
+        
+        let labelTitle = UILabel()
+        labelTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 44)
+        labelTitle.text = "دردشة"
+        labelTitle.font = UIFont(name: "GE SS Two", size: 17)
+        self.navigationItem.titleView = labelTitle
+        
+        
+        let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
+        whiteNB.backgroundColor = UIColor.white
+        self.view.addSubview(whiteNB)
+
+        if !UserDefaults.standard.bool(forKey: "logged"){
+            joinUser()
+        }
         
         loadMessages()
     }
     
+    func joinUser(){
+        
+        let alert = UIAlertController(title: "مرحباً بك", message: "أدخل الرقم التعريفى الخاص بك", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "User ID"
+            textField.keyboardType = .numberPad
+        }
+        
+        alert.addAction(UIAlertAction(title: "إدخال", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction) -> Void in
+            
+            self.userIDTF = alert.textFields![0].text!
+            print(self.userIDTF)
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(self.userIDTF, forKey: "userID")
+            userDefaults.set(true, forKey: "logged")
+            userDefaults.synchronize()
+            
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     // MARK: TGChatInputTextPanelDelegate
     
     func inputTextPanel(_ inputTextPanel: TGChatInputTextPanel, requestSendText text: String) {
-        let msg = Message()
-        msg.text = text
+        let msg = Message(text: text)
+        //msg.text = text
         sendMessage(msg)
     }
     
@@ -83,9 +130,9 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
         inputPanel?.endInputting(true)
         
         guard let command = linkInfo["command"] as? String else { return }
-        let msg = Message()
-        msg.text = command
-        sendMessage(msg)
+        let msg = Message(text: command)
+//        msg.text = command
+        //sendMessage(msg)
     }
     
     // MARK: MessageManagerDelegate
@@ -101,7 +148,7 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
     }
     
     // MARK: UINavigationControllerDelegate
-    
+    /*
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         guard viewController is ChatsViewController else {
             return
@@ -117,6 +164,7 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
             }
         }
     }
+    */
     
     // MARK: Private
     
@@ -134,23 +182,110 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
     }
     
     private func loadMessages() {
+        
+        let utils: Utils = Utils()
+        
+        if !utils.isConnectedToNetwork(){
+            let alert = UIAlertController(title: "تنبيه", message: "يوجد مشكلة فى الإتصال بالإنترنت", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "حاول مرة أخرى", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         layouts.removeAllObjects()
         
+        let chatUrl = "http://hegg.nakeeb.me/API/qassem/getChat.php"
+        
+        let parameters: Parameters=[
+            "userID": UserDefaults.standard.string(forKey: "userID") ?? 1
+        ]
+        
+        Alamofire.request(chatUrl, method: .post, parameters: parameters)
+            .responseJSON{
+                
+                response in
+                
+                print(response)
+                
+                if let result = response.result.value {
+                    
+                    
+                    let chatJSONArr = result as! NSArray
+                    
+                    var msgs = [Message]()
+                    
+                    let userID = UserDefaults.standard.string(forKey: "userID")!
+                    
+                    for chatMsgObj in chatJSONArr{
+                        
+                        var isOutgoing = true
+                        
+                        if (chatMsgObj as AnyObject).value(forKey: "fromUserID") as! String == userID{
+                            isOutgoing = true
+                        }
+                        else{
+                            isOutgoing = false
+                        }
+                        
+                        msgs.append(Message.init(msgId: (chatMsgObj as AnyObject).value(forKey: "id") as! String,
+                                                              text: (chatMsgObj as AnyObject).value(forKey: "msg") as! String,
+                                                              isOutgoing: isOutgoing,
+                                                              deliveryStatus: MessageDeliveryStatus.Delivered))
+                    }
+                
+                    
+                    self.addMessages(msgs, scrollToBottom: true, animated: false)
+                    
+                }
+        }
+        /*
         messageManager.fetchMessages(withChatId: chat.chatId) { [weak self] (msgs) in
             if let strongSelf = self {
                 strongSelf.addMessages(msgs, scrollToBottom: true, animated: false)
             }
         }
+        */
     }
     
     private func sendMessage(_ message: Message) {
         message.isOutgoing = true
-        message.senderId = User.currentUser.userId
-        message.deliveryStatus = .Read
+        message.senderId = UserDefaults.standard.string(forKey: "userID")!
+        message.deliveryStatus = .Delivering
         
         addMessages([message], scrollToBottom: true, animated: true)
         
-        messageManager.sendMessage(message, toChat: chat)
+        //messageManager.sendMessage(message, toChat: chat)
+        
+        let chatUrl = "http://hegg.nakeeb.me/API/qassem/sendMsg.php"
+        
+        let parameters: Parameters=[
+            "userID": message.senderId,
+            "msg": message.text
+        ]
+        
+        Alamofire.request(chatUrl, method: .post, parameters: parameters)
+            .responseJSON{
+                
+                response in
+                
+                print(response)
+                
+                if let result = response.result.value {
+                    
+                    
+                    let chatMsgObj = result as! NSObject
+                    
+                    if (chatMsgObj as AnyObject).value(forKey: "msg") as! String == "success"{
+                        message.deliveryStatus = MessageDeliveryStatus.Delivered
+                    }
+                    else{
+                        message.deliveryStatus = MessageDeliveryStatus.Failure
+                    }
+                    self.loadMessages()
+                    
+                }
+        }
+
         
         SoundManager.manager.playSound(name: "sent.caf", vibrate: false)
     }
@@ -226,7 +361,7 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
         collectionView!.contentOffset = newContentOffset
         
         // fix navigation items display
-        setupNavigationItems()
+        //setupNavigationItems()
     }
     
     typealias AnchorItem = (index: Int, originY: CGFloat, offset: CGFloat, height: CGFloat)

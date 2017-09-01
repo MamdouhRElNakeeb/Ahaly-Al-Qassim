@@ -6,7 +6,6 @@ package com.khaled.hegg.utils;
 
 public class Url {
     public static final String BASE_URL="http://hegg.nakeeb.me/API/qassem/";
-    public static final String FATAWY = BASE_URL+"getFatawy.php";
     public static final String NEWS = BASE_URL+"getNews.php";
     public static final String TIMELINE = BASE_URL+"getTimeline.php";
     public static final String videosUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLULt7R-fsx1GzIHTj3yaHwaL5WRwcGdr7&maxResults=30&key=AIzaSyAaKC-V6JT2M0iP6NUm3aXWkHBElCySfxQ";
@@ -17,4 +16,6 @@ public class Url {
     public static final String PREVIEW_IMAGE = BASE_URL+"Gallery/" ;
     public static final String GET_FATWA = BASE_URL+"getFatawy.php" ;
     public static final String CHAIR_REQUEST=BASE_URL+"chairOrder.php";
+    public static final String USER_GUIDE_REQUEST=BASE_URL+"getGuide.php";
+    public static final String HAGG_TAYEH_REQUEST=BASE_URL+"tayeh.php";
 }

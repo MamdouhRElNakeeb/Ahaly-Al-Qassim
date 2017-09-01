@@ -124,7 +124,7 @@ class GalleryVC: UIViewController {
             response in
             
             self.dismissSpinner()
-            print(response)
+            //print(response)
             
             if let result = response.result.value {
                 
@@ -147,7 +147,7 @@ class GalleryVC: UIViewController {
     
 }
 
-extension GalleryVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GalleryVC: UICollectionViewDelegate, UICollectionViewDataSource, CollieGalleryDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryArray.count
@@ -157,7 +157,9 @@ extension GalleryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as! GalleryCell
         
-        cell.picIV.sd_setImage(with: URL(string: galleryUrl + "Gallery/" + galleryArray[indexPath.row]))
+        cell.picIV.sd_setImage(with: URL(string: galleryUrl + "Gallery/" + galleryArray[indexPath.row]), placeholderImage: UIImage(named: "logo_icon"))
+        
+        print(galleryUrl + "Gallery/" + galleryArray[indexPath.row])
         
         return cell
     }
@@ -173,5 +175,6 @@ extension GalleryVC: UICollectionViewDelegate, UICollectionViewDataSource {
         self.gallery.scrollToIndex(indexPath.row)
         print(indexPath.row)
     }
+    
 }
 

@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">أهالى القصيم</string>
+    <string name="app_name">أهالي القصيم</string>
     <string name="title_activity_maps">Map</string>
-    <string name="GOOGLE_API_KEY">AIzaSyDGFQVH3DRa6K8sT4V7r3gaanxhRTYYKKw</string>
+    <string name="GOOGLE_API_KEY">AIzaSyAaKC-V6JT2M0iP6NUm3aXWkHBElCySfxQ</string>
     <string name="main">الرئيسية</string>
     <string name="title">الجدول الزمنى</string>
     <string name="timeline">الخطة الزمنية</string>
     <string name="videos">الفيديوهات</string>
     <string name="pic">الصور</string>
-    <string name="news">الاخبار</string>
+    <string name="news">الأخبار</string>
     <string name="about_company">عن الشركة</string>
-    <string name="contact_us">عن الشركة</string>
+    <string name="contact_us">تواصل معنا</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="choose_your_service">اختر خدمتك</string>
     <string name="gadwl">الجدول</string>
-    <string name="amakn_tgmo3">اماكن التجمع</string>
+    <string name="amakn_tgmo3">أماكن التجمع</string>
     <string name="our_locations">مواقعنا بالمشاعر</string>
     <string name="fatwas">الفتاوى</string>
     <string name="sewar">الصور</string>
@@ -26,18 +26,35 @@
     <string name="hegg_app">تطبيق الحج</string>
     <string name="about_us">من نحن</string>
     <string name="www_ahalyalqassim_com">website</string>
-    <string name="website">www_ahalyalqassim_com</string>
+    <string name="website">www.ahalyalqassim.com</string>
     <string name="description">شركة حملة أهالي القصيم إحدى الشركات التي تقدم أرقى الخدمات لضيوف الرحمن، لحجاج الداخل من مواطنين ومقيمين وبأسعار منافسة. تنبع خبرة الشركة أكثر من 20 عام والتي كانت ومازالت تقدم فيها الخدمات لضيوف الرحمن، وهي تسعى لتقديم خدمات أفضل في كل عام مستفيدين من تجاربنا وخبراتنا مع ابتكار الجديد والمفيد دائماً.. تدير الحملة نخبة من الكوادر من ذوي الخبرات الإدارية والمهنية العريقة في هذا المجال. رؤيتنا نؤمن بمستقبل غير محدود للإمكانيات .. وهذا ما يدفعنا اليوم للانطلاق بهذا القطاع لما هو أبعد .. حيث نجعل من التطور واقعا ملموساً ومؤثراً في طريقة أداء خدمة ضيوف الرحمن .. طموحاتنا تقودنا نحو تقديم الأفضل لعملائنا.. مستندين في ذلك إلى إبداعنا وخبرتنا.. وعزمنا على التطور الدائم ،، رسالتنا تقديم خدمة متكاملة لحجاج بيت الله الحرام والتفاني في ذلك ليتفرغ الحاج لعبادته ويؤديها كما أراد الله سبحانه وتعالى وعلى منهج المصطفي صلى الله عليه وسلم</string>
     <string name="company_description">شركة حملة أهالي القصيم إحدى الشركات التي تقدم أرقى الخدمات لضيوف الرحمن، لحجاج الداخل من مواطنين ومقيمين وبأسعار منافسة. تقديم خدمة متكاملة لحجاج بيت الله الحرام والتفاني في ذلك ليتفرغ الحاج لعبادته ويؤديها كما أراد الله سبحانه وتعالى وعلى منهج المصطفي صلى الله عليه وسلم</string>
     <string name="camp_news">اخبار الحملة</string>
-    <string name="pics">صزر الحملة</string>
+    <string name="pics">صور الحملة</string>
     <string name="mawke3na">موقعنا بالمشاعر</string>
     <string name="fatawy">الفتاوى</string>
     <string name="request_fatwa">طلب فتوى</string>
     <string name="fatwa_has_sent">تم ارسال سؤالك...شكرا لك</string>
     <string name="ok">موافق</string>
-    <string name="chair_has_been_request">تم ارسال طلبك</string>
-    <string name="request_chair">طلب كرسى</string>
+    <string name="chair_has_been_request">تم إرسال طلبك</string>
+    <string name="request_chair">طلب كرسي</string>
+    <string name="hagg_tayeh">الحاج الضائع</string>
     <string name="ask_question_here">اكتب سؤالك هنا</string>
+    <string name="user_guide">دليل الحاج و المعتمر</string>
+
+    <!--    Permissions    -->
+    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+    <string name="location_permission_denied">This app requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'Google Maps API Demos\'.</string>
+    <string name="permission_required_toast">Location permission is required for this demo.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hagg_daye3">الحاج الضائع</string>
+    <string name="name">الاسم</string>
+    <string name="email">البريد الإلكترونى</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="number">0555145983</string>
+    <string name="number2">0163263091</string>
+    <string name="quiz">مسابقات</string>
 
 </resources>

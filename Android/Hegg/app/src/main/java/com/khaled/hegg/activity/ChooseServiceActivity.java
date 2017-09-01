@@ -1,8 +1,10 @@
 package com.khaled.hegg.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +17,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.khaled.hegg.R;
+import com.khaled.hegg.adapter.MainAdapter;
+import com.rd.PageIndicatorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ChooseServiceActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
@@ -30,7 +33,7 @@ public class ChooseServiceActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     @BindView(R.id.background)
     ImageView iv_background ;
-    @BindView(R.id.iv_marker)
+    /*@BindView(R.id.iv_marker)
     ImageView iv_marker ;
     @BindView(R.id.iv_maps)
     ImageView iv_maps ;
@@ -45,48 +48,29 @@ public class ChooseServiceActivity extends AppCompatActivity {
     @BindView(R.id.iv_about)
     ImageView iv_about ;
     @BindView(R.id.iv_news)
-    ImageView iv_news ;
+    ImageView iv_news ;*/
+    @BindView(R.id.viewPager)
+    ViewPager viewPager ;
 
+    @BindView(R.id.page_indicator)
+    PageIndicatorView circleIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_service);
         ButterKnife.bind(this);
-
-
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         initPics(iv_background,R.drawable.splash_bg);
-        initPics(iv_marker,R.drawable.maps_ic);
-        initPics(iv_maps,R.drawable.maps_ic);
-        initPics(iv_fatwa,R.drawable.fatwa_icon);
-        initPics(iv_timeline,R.drawable.timeline_icon);
-        initPics(iv_pic,R.drawable.gallery_icon);
-        initPics(iv_video,R.drawable.videos_icon);
-        initPics(iv_about,R.drawable.about_icon);
-        initPics(iv_news,R.drawable.news_icon);
-
+        viewPager.setAdapter(new MainAdapter(getSupportFragmentManager()));
+        circleIndicator.setViewPager(viewPager);
         initToolbar();
         initNavigationDrawer();
        // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-
-
     }
 
  private void initNavigationDrawer() {
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                int id = menuItem.getItemId();
-
-                switch (id){
-
-
-                }
-                return true;
-            }
-        });
-
+     
      navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
          @Override
          public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -129,17 +113,17 @@ public class ChooseServiceActivity extends AppCompatActivity {
                      drawerLayout.closeDrawers();
 
                      break ;
-                 case R.id.ll_videos:
+                 case R.id.videos:
                      startActivity(new Intent(ChooseServiceActivity.this,VideosActivity.class));
                      drawerLayout.closeDrawers();
 
                      break ;
-                 case R.id.ll_about_us:
+                 case R.id.about:
                      startActivity(new Intent(ChooseServiceActivity.this,AboutUsActivity.class));
                      drawerLayout.closeDrawers();
-
                      break ;
-                 case R.id.ll_news :
+
+                 case R.id.news :
                      startActivity(new Intent(ChooseServiceActivity.this,NewsActivity.class));
                      drawerLayout.closeDrawers();
 
@@ -152,8 +136,27 @@ public class ChooseServiceActivity extends AppCompatActivity {
                  case R.id.request_fatwa:
                      startActivity(new Intent(ChooseServiceActivity.this,RequestFatwaActivity.class));
                      drawerLayout.closeDrawers();
-
                      break ;
+                 case R.id.user_guide :
+
+                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mnaskacademy.org/ara/download-centre")));
+                     drawerLayout.closeDrawers();
+                     break ;
+                 case R.id.contact_us:
+                     startActivity(new Intent(ChooseServiceActivity.this,ContactUsActivity.class));
+                     drawerLayout.closeDrawers();
+                     break;
+
+                 case R.id.hagg_tayeh:
+                     startActivity(new Intent(ChooseServiceActivity.this, HaggTayehActivity.class));
+                     drawerLayout.closeDrawers();
+                     break;
+
+                 case R.id.quiz:
+
+                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://quiz.app101.sa/qasim/")));
+                     drawerLayout.closeDrawers();
+                     break;
              }
              return true;
          }
@@ -172,17 +175,18 @@ public class ChooseServiceActivity extends AppCompatActivity {
                 super.onDrawerOpened(v);
             }
         };
+
+
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                if (drawerLayout.isDrawerOpen(Gravity.END)) {
-                    drawerLayout.closeDrawer(Gravity.END);
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
                 } else {
-                    drawerLayout.openDrawer(Gravity.END);
+                    drawerLayout.openDrawer(Gravity.RIGHT);
                 }
             }
         });
@@ -194,9 +198,10 @@ public class ChooseServiceActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         tv_toolbar_title.setText(R.string.welcome);
 
+
     }
 
-    @OnClick({R.id.ll_amakn_tgmo3,R.id.ll_mawk3na,R.id.ll_fatawy,
+  /*  @OnClick({R.id.ll_amakn_tgmo3,R.id.ll_mawk3na,R.id.ll_fatawy,
             R.id.ll_timeline,R.id.ll_pics,R.id.ll_videos,
             R.id.ll_about_us,R.id.ll_news})
     public void navigateScreen(View view) {
@@ -226,7 +231,7 @@ public class ChooseServiceActivity extends AppCompatActivity {
                 startActivity(new Intent(this,NewsActivity.class));
                 break ;
         }
-    }
+    }*/
 
     public void initPics(final ImageView imageView, final int drawable){
         imageView.post(new Runnable() {
@@ -241,4 +246,5 @@ public class ChooseServiceActivity extends AppCompatActivity {
             }
         });
     }
+
 }

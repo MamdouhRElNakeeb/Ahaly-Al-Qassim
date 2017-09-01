@@ -12,6 +12,9 @@ import Alamofire
 class ChairOrderVC: UIViewController {
     
     var subjectTF = UITextField()
+    var emailTF = UITextField()
+    var timeTF = UITextField()
+    var mobileTF = UITextField()
     var msgTF = UITextView()
     
     var userIDTF = String()
@@ -65,7 +68,7 @@ class ChairOrderVC: UIViewController {
         contactIconIV.frame = CGRect(x: margin, y: 60, width: 90, height: 90)
         
         let contactLbl = UILabel(frame: CGRect(x: margin, y: contactIconIV.frame.maxY + 10, width: 90, height: 15))
-        contactLbl.text = "طلب كرسى"
+        contactLbl.text = "طلب كرسي"
         contactLbl.font = UIFont(name: "GE SS Two", size: 14)
         contactLbl.textAlignment = .center
         contactLbl.textColor = UIColor.white
@@ -85,13 +88,13 @@ class ChairOrderVC: UIViewController {
         let whiteV = UIView(frame: CGRect(x: 0, y: whiteTriangle.frame.maxY, width: self.view.frame.width, height: self.view.frame.height - whiteTriangle.frame.maxY))
         whiteV.backgroundColor = UIColor.white
         
-        let subjectV = UIView(frame: CGRect(x: margin * 3 / 2, y: (self.view.frame.height / 2) - 22, width: self.view.frame.width - margin * 3, height: 44))
+        let subjectV = UIView(frame: CGRect(x: margin * 3 / 2, y: logoIV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 44))
         subjectV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         
         subjectTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: subjectV.frame.width - margin / 2, height: 44))
         
-        subjectTF.placeholder = "رقم الجوال"
-        subjectTF.keyboardType = .phonePad
+        subjectTF.placeholder = "الاسم"
+        subjectTF.keyboardType = .namePhonePad
         subjectTF.textAlignment = .right
         subjectTF.font = UIFont(name: "GE SS Two", size: 14)
         subjectTF.textColor = UIColor.black
@@ -99,9 +102,51 @@ class ChairOrderVC: UIViewController {
         
         subjectV.addSubview(subjectTF)
         
-        let sendBtn = UIButton(frame: CGRect(x: margin * 3 / 2, y: subjectV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
         
-        sendBtn.setTitle("طلب كرسى", for: .normal)
+        let mobileV = UIView(frame: CGRect(x: margin * 3 / 2, y: subjectV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
+        mobileV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        mobileTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: mobileV.frame.width - margin / 2, height: 44))
+        
+        mobileTF.placeholder = "رقم الجوال"
+        mobileTF.textAlignment = .right
+        mobileTF.keyboardType = .namePhonePad
+        mobileTF.font = UIFont(name: "GE SS Two", size: 14)
+        mobileTF.textColor = UIColor.black
+        mobileTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        mobileV.addSubview(mobileTF)
+        
+        let emailV = UIView(frame: CGRect(x: margin * 3 / 2, y: mobileV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
+        emailV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        emailTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: emailV.frame.width - margin / 2, height: 44))
+        
+        emailTF.placeholder = "عدد الكراسى المطلوبة"
+        emailTF.textAlignment = .right
+        emailTF.keyboardType = .numberPad
+        emailTF.font = UIFont(name: "GE SS Two", size: 14)
+        emailTF.textColor = UIColor.black
+        emailTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        emailV.addSubview(emailTF)
+        
+        let timeV = UIView(frame: CGRect(x: margin * 3 / 2, y: emailV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
+        timeV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        timeTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: timeV.frame.width - margin / 2, height: 44))
+        
+        timeTF.placeholder = "الوقت"
+        timeTF.textAlignment = .right
+        timeTF.font = UIFont(name: "GE SS Two", size: 14)
+        timeTF.textColor = UIColor.black
+        timeTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        timeV.addSubview(timeTF)
+        
+        let sendBtn = UIButton(frame: CGRect(x: margin * 3 / 2, y: timeV.frame.maxY + 10, width: self.view.frame.width - margin * 3, height: 44))
+        
+        sendBtn.setTitle("طلب كرسي", for: .normal)
         sendBtn.titleLabel?.font = UIFont(name: "GE SS Two", size: 14)
         sendBtn.backgroundColor = UIColor(red: 74/255, green: 174/255, blue: 106/255, alpha: 1)
         sendBtn.titleLabel?.textColor = UIColor.white
@@ -116,6 +161,9 @@ class ChairOrderVC: UIViewController {
         self.view.addSubview(contactLbl)
         self.view.addSubview(contactIconIV)
         self.view.addSubview(subjectV)
+        self.view.addSubview(mobileV)
+        self.view.addSubview(emailV)
+        self.view.addSubview(timeV)
         self.view.addSubview(sendBtn)
         
     }

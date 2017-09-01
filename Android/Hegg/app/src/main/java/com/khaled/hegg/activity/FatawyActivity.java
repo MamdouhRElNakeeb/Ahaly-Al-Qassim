@@ -49,8 +49,6 @@ public class FatawyActivity extends AppCompatActivity {
         initProgress();
     }
 
-
-
     private void initToolbar() {
         toolbar_title=   ButterKnife.findById(mToolbar,R.id.toolbarText);
         setSupportActionBar(mToolbar);
@@ -75,6 +73,7 @@ public class FatawyActivity extends AppCompatActivity {
                 .subscribe(new Observer<List<Fatwa>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override

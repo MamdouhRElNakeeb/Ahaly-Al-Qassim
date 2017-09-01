@@ -11,6 +11,8 @@
 $userID = htmlentities($_REQUEST["userID"]);
 $subject = htmlentities($_REQUEST["subject"]);
 $msg = htmlentities($_REQUEST["msg"]);
+$name = htmlentities($_REQUEST["name"]);
+$mobile = htmlentities($_REQUEST["mobile"]);
 
 if (empty($userID) || empty($subject) || empty($msg)){
 
@@ -26,7 +28,7 @@ require ("secure/qassemconn.php");
 $access = new access(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $access->connect();
 
-$result = $access->contactMsg($userID, $subject, $msg);
+$result = $access->contactMsg($userID, $subject, $msg, $name, $mobile);
 
 if ($result){
     $returnArray["error"] = FALSE;

@@ -1,13 +1,18 @@
 package com.khaled.hegg.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,9 +31,14 @@ import butterknife.ButterKnife;
 public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     @BindView(R.id.background)
-    ImageView iv_background ;
+    ImageView iv_background;
     @BindView(R.id.cv_website)
-    CardView cv_website ;
+    CardView cv_website;
+    @BindView(R.id.tv_phone1)
+    TextView tv_phone1;
+
+    @BindView(R.id.tv_phone2)
+    TextView tv_phone2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +54,7 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
                         .asBitmap()
                         .crossFade()
                         .centerCrop()
-                        .override(iv_background.getWidth(),iv_background.getHeight())
+                        .override(iv_background.getWidth(), iv_background.getHeight())
                         .into(iv_background);
             }
         });
@@ -54,6 +64,55 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
         openWebsite();
+        String phone = getResources().getString(R.string.number);
+        openPhoneCall(phone);
+
+    }
+
+    private void openPhoneCall(final String phone) {
+        tv_phone1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPhonePermissionGranted()) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + getResources().getString(R.string.number)));
+                    if (ActivityCompat.checkSelfPermission(AboutUsActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        startActivity(intent);
+                    }
+                    else
+                        ActivityCompat.requestPermissions(AboutUsActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                }
+        }
+    });
+
+        tv_phone2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPhonePermissionGranted()) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + getResources().getString(R.string.number2)));
+                    if (ActivityCompat.checkSelfPermission(AboutUsActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        startActivity(intent);
+                    }
+                    else
+                        ActivityCompat.requestPermissions(AboutUsActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                }
+            }
+        });
 
     }
 
@@ -91,6 +150,36 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
         ;
         Marker marker = mMap.addMarker(locationMarker);
         marker.showInfoWindow();
+    }
 
+    public  boolean isPhonePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("Permisson","Permission is granted");
+                return true;
+            } else {
+
+                Log.v("Permisson","Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("Permisson","Permission is granted");
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            Log.v("Permisson","Permission: "+permissions[0]+ "was "+grantResults[0]);
+            //resume tasks needing this permission
+        }
+        else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+        }
     }
 }

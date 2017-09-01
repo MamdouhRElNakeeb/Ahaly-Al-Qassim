@@ -98,10 +98,16 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         attachButton = UIButton(type: .system)
         attachButton.isExclusiveTouch = true
         attachButton.setImage(UIImage(named: "TGAttachButton")!, for: .normal)
+        attachButton.isHidden = true
         
         micButton = UIButton(type: .system)
         micButton.isExclusiveTouch = true
-        micButton.setImage(UIImage(named: "TGMicButton"), for: .normal)
+        micButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
+        micButton.setTitleColor(UIColor(colorLiteralRed: 0/255.0, green: 126/255.0, blue: 229/255.0, alpha: 1), for: .normal)
+        micButton.setTitleColor(UIColor(colorLiteralRed: 142/255.0, green: 142/255.0, blue: 147/255.0, alpha: 1), for: .disabled)
+        micButton.titleLabel?.font = UIFont.noc_mediumSystemFont(ofSize: 17)
+        micButton.isEnabled = false
+
         
         super.init(frame: frame)
         

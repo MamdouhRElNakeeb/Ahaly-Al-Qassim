@@ -70,45 +70,90 @@ class access{
     }
 
     // insert appointment into database
-    public function contactMsg($id, $subject, $msg){
+    public function contactMsg($id, $subject, $msg, $name, $mobile){
 
-        $sql = "INSERT INTO contact_msgs SET userID=?, subject=?, msg=?";
+        $sql = "INSERT INTO contact_msgs SET userID=?, subject=?, msg=?, name=?, mobile=?";
         $statement = $this->conn->prepare($sql);
         if(!$statement){
             throw new Exception($statement->error);
         }
         // bind 8 parameters of type string to be placed in $sql command
-        $statement->bind_param("sss", $id, $subject, $msg);
+        $statement->bind_param("sssss", $id, $subject, $msg, $name, $mobile);
         $returnValue = $statement->execute();
         return $returnValue;
 
     }
 
     // insert appointment into database
-    public function chairOrder($id){
+    public function chairOrder($id, $name, $time, $chairs_no){
 
-        $sql = "INSERT INTO chair_orders SET userID=?";
+        $sql = "INSERT INTO chair_orders SET mobile=?, name=?, time=?, chairs_no=?";
         $statement = $this->conn->prepare($sql);
         if(!$statement){
             throw new Exception($statement->error);
         }
         // bind 8 parameters of type string to be placed in $sql command
-        $statement->bind_param("s", $id);
+        $statement->bind_param("ssss", $id, $name, $time, $chairs_no);
         $returnValue = $statement->execute();
         return $returnValue;
 
     }
 
     // insert appointment into database
-    public function fatwaRequest($question){
+    public function haggTayeh($name, $mobile, $lat, $lon){
 
-        $sql = "INSERT INTO fatawy SET question=?";
+        $sql = "INSERT INTO hagg_tayeh SET name=?, mobile=?, lat=?, lon=?";
         $statement = $this->conn->prepare($sql);
         if(!$statement){
             throw new Exception($statement->error);
         }
         // bind 8 parameters of type string to be placed in $sql command
-        $statement->bind_param("s", $question);
+        $statement->bind_param("ssss", $name, $mobile, $lat, $lon);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
+    public function updateTayeh($id, $mode){
+
+        $sql = "UPDATE hagg_tayeh SET status=? WHERE id=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("ss", $mode, $id);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
+    public function fatwaRequest($question, $name, $phone, $email){
+
+        $sql = "INSERT INTO fatawy SET question=?, name=?, mobile=?, email=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("ssss", $question, $name, $phone, $email);
+        $returnValue = $statement->execute();
+        return $returnValue;
+
+    }
+
+    // insert appointment into database
+    public function updateFatwa($id, $answer){
+
+        $sql = "UPDATE fatawy SET answer=? WHERE id=?";
+        $statement = $this->conn->prepare($sql);
+        if(!$statement){
+            throw new Exception($statement->error);
+        }
+        // bind 8 parameters of type string to be placed in $sql command
+        $statement->bind_param("ss", $answer, $id);
         $returnValue = $statement->execute();
         return $returnValue;
 

@@ -13,21 +13,22 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let titles: [String] = [
         "الرئيسية",
-        "مواقعنا بالمشاعر",
-       "أماكن التجمع",
-        "الجدول الزمنى",
-        "فيديوهات",
-        "صور",
+        "دليل الحاج و المعتمر",
         "الأخبار",
-     "دليل الحاج",
-        "طلب كرسى",
+       "موقعنا بالمشاعر",
+        "أماكن التجمع",
+        "الخطة الزمنية",
         "طلب فتوى",
-        "الفتاوى",
-        "عن الشركة",
-  "دردشة",
-        "إتصل بنا"]
+        "طلب كرسي",
+     "الحاج الضائع",
+     "مسابقات",
+        "الفيديوهات",
+        "الصور",
+        "تواصل معنا",
+        "دردشة",
+  "عن الشركة"]
     
-    let images: [String] = ["homeIcon", "markerIcon", "mapIcon", "timelineIcon", "videosIcon", "galleryIcon", "newsIcon", "guideIcon", "chairIcon", "fatwaIcon", "fatwasIcon", "aboutIcon", "contactIcon", "contactIcon"]
+    let images: [String] = ["homeIcon", "guideIcon", "newsIcon", "markerIcon", "mapIcon", "timelineIcon", "fatwaIcon", "chairIcon", "markerIcon", "compsIcon", "videosIcon", "galleryIcon", "contactIcon", "chatIcon", "aboutIcon"]
     
     
     @IBOutlet weak var sideMenuTV: UITableView!
@@ -41,13 +42,12 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         super.viewDidLoad()
         sideMenuTV.separatorStyle = .none
-        sideMenuTV.frame = CGRect(x: 0, y: 0 /*(self.view.frame.size.height - 54 * CGFloat(titles.count)) / 2.0*/, width: self.view.frame.size.width, height: self.view.frame.height /*54 * CGFloat(titles.count)*/)
+        sideMenuTV.frame = CGRect(x: 0, y: (self.view.frame.size.height - 45 * CGFloat(titles.count)) / 2.0, width: self.view.frame.size.width, height: 45 * CGFloat(titles.count))
         sideMenuTV.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
         sideMenuTV.isOpaque = false
         sideMenuTV.backgroundColor = UIColor.clear
         sideMenuTV.backgroundView = nil
         sideMenuTV.isScrollEnabled = true
-        //sideMenuTV.bounces = false
         
     }
     
@@ -56,7 +56,7 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SideMenuTVCell
         
         
-        cell.label.font = UIFont(name: "GE SS Two", size: 18)
+        cell.label.font = UIFont(name: "GE SS Two", size: 15)
         cell.label.text = titles[indexPath.row]
         cell.icon.image = UIImage(named: images[indexPath.row])
         cell.icon.tintColor = UIColor.white
@@ -76,13 +76,12 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             
-            
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: LandingVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 1:
+        case 3:
             
             let mapListVC = MapListVC()
             mapListVC.mapListType = true
@@ -91,7 +90,7 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             break
         
-        case 2:
+        case 4:
             
             let mapListVC = MapListVC()
             mapListVC.mapListType = false
@@ -100,67 +99,86 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             break
             
-        case 3:
+        case 5:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: TimelineVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 4:
+        case 10:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: VideoVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 5:
+        case 11:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: GalleryVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 6:
+        case 2:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: NewsVC())
    	         sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 7:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: GuideVC())
+        case 1:
+            
+            UIApplication.tryURL(urls: [
+                "http://www.mnaskacademy.org/ara/download-centre"
+                ])
+            
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 8:
+        case 7:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChairOrderVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 9:
+        case 6:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatwaVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 10:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: FatawyAnswersVC())
+        case 8:
+            
+            // TODO HaggTayeh
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: HaggTayehVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 11:
+        case 14:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: AboutVC())
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 12:
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ChatVC())
+        case 13:
+            var chatVC: UIViewController?
+            let chat: Chat = {
+                let chat = Chat()
+                chat.type = "bot"
+                chat.targetId = "89757"
+                chat.chatId = chat.type + "_" + chat.targetId
+                chat.title = "Chat"
+                chat.detail = "bot"
+                return chat
+            }()
+            
+            chatVC = ChatVC(chat: chat)
+
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: chatVC!)
             sideMenuViewController?.hideMenuViewController()
             
             break
             
-        case 13:
+        case 12:
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ContactVC())
             sideMenuViewController?.hideMenuViewController()
             
@@ -176,7 +194,7 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54
+        return 45
     }
     
     

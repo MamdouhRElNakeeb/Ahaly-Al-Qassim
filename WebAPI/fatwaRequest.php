@@ -7,6 +7,9 @@
  */
 
 $question = htmlentities($_REQUEST["question"]);
+$name = htmlentities($_REQUEST["name"]);
+$phone = htmlentities($_REQUEST["phone"]);
+$email = htmlentities($_REQUEST["email"]);
 
 if (empty($question)){
 
@@ -22,7 +25,7 @@ require ("secure/qassemconn.php");
 $access = new access(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $access->connect();
 
-$result = $access->fatwaRequest($question);
+$result = $access->fatwaRequest($question, $name, $phone, $email);
 
 if ($result){
     $returnArray["error"] = FALSE;

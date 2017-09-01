@@ -25,7 +25,7 @@ class FatwaDetails: UIViewController {
         
         let labelTitle = UILabel()
         labelTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 44)
-        labelTitle.text = "إجابات الفتاوى"
+        labelTitle.text = "إجابات الفتاوي"
         labelTitle.font = UIFont(name: "GE SS Two", size: 17)
         self.navigationItem.titleView = labelTitle
         

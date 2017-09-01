@@ -7,6 +7,9 @@
  */
 
 $userID = htmlentities($_REQUEST["userID"]);
+$name = htmlentities($_REQUEST["name"]);
+$chairs_no = htmlentities($_REQUEST["chairs_no"]);
+$time = htmlentities($_REQUEST["time"]);
 
 if (empty($userID)){
 
@@ -22,7 +25,7 @@ require ("secure/qassemconn.php");
 $access = new access(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $access->connect();
 
-$result = $access->chairOrder($userID);
+$result = $access->chairOrder($userID, $name, $chairs_no, $time);
 
 if ($result){
     $returnArray["error"] = FALSE;

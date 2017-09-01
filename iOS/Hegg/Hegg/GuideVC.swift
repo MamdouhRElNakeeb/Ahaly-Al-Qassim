@@ -155,8 +155,10 @@ class GuideVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "guideDetails") as! GuideDetailsVC
         newViewController.guideItem = guideArray[indexPath.row]
+        
         self.navigationController?.pushViewController(newViewController, animated: true)
         
     }

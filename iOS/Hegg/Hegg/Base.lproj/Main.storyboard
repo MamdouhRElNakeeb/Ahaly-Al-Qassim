@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -186,7 +187,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WtE-kh-qyG">
                         <view key="titleView" contentMode="scaleToFill" id="GDr-wc-D17">
-                            <rect key="frame" x="470.5" y="5.5" width="83" height="33"/>
+                            <rect key="frame" x="146" y="5.5" width="83" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="مرحبا بك" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEF-Iz-kvh">
@@ -380,7 +381,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LandingVC" automaticallyAdjustsScrollViewInsets="NO" id="JsZ-bv-mIU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Yxm-BI-skx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yxm-BI-skx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -619,22 +620,22 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="54" id="IKP-vU-hpM" customClass="SideMenuTVCell" customModule="Hegg" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="54"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="45" id="IKP-vU-hpM" customClass="SideMenuTVCell" customModule="Hegg" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKP-vU-hpM" id="aTd-C2-WFp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الخريطة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZ1-wJ-6h3">
-                                                    <rect key="frame" x="8" y="0.0" width="297" height="54"/>
+                                                    <rect key="frame" x="8" y="0.0" width="297" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" name="GESSTwoMedium-Medium" family="GE SS Two" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="52H-4d-BRY">
-                                                    <rect key="frame" x="313" y="8" width="54" height="37"/>
+                                                    <rect key="frame" x="313" y="4" width="54" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
@@ -667,7 +668,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ovJ-rw-XL4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jk6-zS-sLw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jk6-zS-sLw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -895,12 +896,50 @@
             </objects>
             <point key="canvasLocation" x="10260" y="773"/>
         </scene>
+        <!--Hagg TayehVC-->
+        <scene sceneID="ePC-qT-Tf3">
+            <objects>
+                <viewController storyboardIdentifier="tayeh" id="479-Pj-f8K" customClass="HaggTayehVC" customModule="Hegg" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4CU-DV-GWs"/>
+                        <viewControllerLayoutGuide type="bottom" id="bQL-Gv-Xd3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VED-xr-BZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rxo-J8-pXu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PON-lx-9HU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11118" y="770"/>
+        </scene>
+        <!--Chair OrderVC-->
+        <scene sceneID="5Tz-Hy-69z">
+            <objects>
+                <viewController storyboardIdentifier="chairOrder" id="XiS-UV-RsD" customClass="ChairOrderVC" customModule="Hegg" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qNb-l0-Abp"/>
+                        <viewControllerLayoutGuide type="bottom" id="4th-V0-GNK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vwb-CG-JxE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ILF-O6-XbO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Dk-N9-89M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11937" y="773"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="fjl-6L-rIj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b8d-wa-s2u" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PbV-a2-9fV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PbV-a2-9fV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -936,7 +975,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Flt-Oo-hTf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0zb-Gk-OAD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zb-Gk-OAD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -954,7 +993,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6gp-z8-VXY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hga-Wj-ndq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hga-Wj-ndq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -972,7 +1011,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C5L-Kf-jk3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X7T-GX-lc2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X7T-GX-lc2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -990,7 +1029,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IpG-HH-6iw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5O1-lo-hF8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5O1-lo-hF8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1008,7 +1047,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tgd-Dv-SDK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KdV-M3-ioG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KdV-M3-ioG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1026,7 +1065,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B2g-ih-GNl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GRw-yF-2i8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GRw-yF-2i8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1044,7 +1083,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rrC-lN-vpt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4g9-8c-dVb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4g9-8c-dVb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1074,6 +1113,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="550-hu-9jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10260" y="-12"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OQs-MS-ABg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KMe-nc-uPQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RCH-dL-Crj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="479-Pj-f8K" kind="relationship" relationship="rootViewController" id="FVf-nB-ae2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bzq-cG-Qdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11118" y="-12"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sag-r6-UdM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LM4-ef-GCM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lAY-hP-tc9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XiS-UV-RsD" kind="relationship" relationship="rootViewController" id="jsK-AG-BZe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tu7-yL-P4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11937" y="-12"/>
         </scene>
     </scenes>
     <resources>

@@ -12,6 +12,9 @@ import Alamofire
 class FatwaVC: UIViewController {
     
     var subjectTF = UITextField()
+    var nameTF = UITextField()
+    var mobileTF = UITextField()
+    var emailTF = UITextField()
     var msgTF = UITextView()
     
     var userIDTF = String()
@@ -20,7 +23,7 @@ class FatwaVC: UIViewController {
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     
-    let margin: CGFloat = 30
+    let margin: CGFloat = 15
     
     let contactMsgUrl = "http://hegg.nakeeb.me/API/qassem/fatwaRequest.php"
     
@@ -51,7 +54,7 @@ class FatwaVC: UIViewController {
         
         let logoIV = UIImageView(image: UIImage(named: "logo_icon"))
         
-        logoIV.frame = CGRect(x: self.view.frame.width - margin * 4, y: 110, width: 100, height: 100)
+        logoIV.frame = CGRect(x: self.view.frame.width - margin * 8, y: 110, width: 100, height: 100)
         logoIV.tintColor = UIColor.white
         
         let contactIconImg = UIImage(named:"fatwaIcon")?.withRenderingMode(.alwaysTemplate)
@@ -80,8 +83,47 @@ class FatwaVC: UIViewController {
         let whiteV = UIView(frame: CGRect(x: 0, y: whiteTriangle.frame.maxY, width: self.view.frame.width, height: self.view.frame.height - whiteTriangle.frame.maxY))
         whiteV.backgroundColor = UIColor.white
         
+        let subjectV = UIView(frame: CGRect(x: margin * 3 / 2, y: logoIV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 44))
+        subjectV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         
-        let msgV = UIView(frame: CGRect(x: margin * 3 / 2, y: logoIV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 150))
+        subjectTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: subjectV.frame.width - margin / 2, height: 44))
+        
+        subjectTF.placeholder = "الاسم"
+        subjectTF.textAlignment = .right
+        subjectTF.font = UIFont(name: "GE SS Two", size: 14)
+        subjectTF.textColor = UIColor.black
+        subjectTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        subjectV.addSubview(subjectTF)
+        
+        let mobileV = UIView(frame: CGRect(x: margin * 3 / 2, y: subjectV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 44))
+        mobileV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        mobileTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: mobileV.frame.width - margin / 2, height: 44))
+        
+        mobileTF.placeholder = "رقم الجوال"
+        mobileTF.textAlignment = .right
+        mobileTF.font = UIFont(name: "GE SS Two", size: 14)
+        mobileTF.textColor = UIColor.black
+        mobileTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        mobileV.addSubview(mobileTF)
+        
+        let emailV = UIView(frame: CGRect(x: margin * 3 / 2, y: mobileV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 44))
+        emailV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        emailTF = UITextField(frame: CGRect(x: margin / 4, y: 0, width: emailV.frame.width - margin / 2, height: 44))
+        
+        emailTF.placeholder = "البريد الإلكترونى"
+        emailTF.textAlignment = .right
+        emailTF.font = UIFont(name: "GE SS Two", size: 14)
+        emailTF.textColor = UIColor.black
+        emailTF.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
+        
+        emailV.addSubview(emailTF)
+        
+        
+        let msgV = UIView(frame: CGRect(x: margin * 3 / 2, y: emailV.frame.maxY + margin, width: self.view.frame.width - margin * 3, height: 150))
         msgV.backgroundColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1)
         
         msgTF = UITextView(frame: CGRect(x: margin / 4, y: 0, width: msgV.frame.width - margin / 2, height: 150))
@@ -113,6 +155,9 @@ class FatwaVC: UIViewController {
         self.view.addSubview(logoIV)
         self.view.addSubview(contactLbl)
         self.view.addSubview(contactIconIV)
+        self.view.addSubview(subjectV)
+        self.view.addSubview(mobileV)
+        self.view.addSubview(emailV)
         self.view.addSubview(msgV)
         self.view.addSubview(sendBtn)
         
@@ -172,7 +217,10 @@ class FatwaVC: UIViewController {
         
         
         let parameters: Parameters=[
-            "question": msgTF.text
+            "question": msgTF.text,
+            "name": subjectTF.text!,
+            "phone": mobileTF.text!,
+            "email": emailTF.text!
         ]
         
         print(parameters)

@@ -36,4 +36,16 @@ class Message: NSObject, NOCChatItem {
     public func type() -> String {
         return self.msgType
     }
+    
+    init(msgId: String, text: String, isOutgoing: Bool, deliveryStatus: MessageDeliveryStatus) {
+        
+        self.msgId = msgId
+        self.text = text
+        self.isOutgoing = isOutgoing
+        self.deliveryStatus = deliveryStatus
+    }
+    
+    init(text: String) {
+        self.text = text
+    }
 }

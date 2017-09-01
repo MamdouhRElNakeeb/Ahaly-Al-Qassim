@@ -31,6 +31,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
     public VideosAdapter(List<Items> list,Context context) {
         this.list = list;
         this.youtubeListener= (YoutubeListener) context;
+
     }
 
     @Override
