@@ -14,7 +14,6 @@ class FatawyAnswersVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var newsTV: UITableView = UITableView()
     
     var fatawyArray = Array<Fatwa>()
-    let newsUrl = "http://hegg.nakeeb.me/API/qassem/getFatawy.php"
     
     var spinner = UIActivityIndicatorView()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -39,7 +38,7 @@ class FatawyAnswersVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         loadnews()
         initnewsTV()
-        initSpinner()
+        //initSpinner()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
         whiteNB.backgroundColor = UIColor.white
@@ -103,7 +102,7 @@ class FatawyAnswersVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             return
         }
         
-        Alamofire.request(newsUrl)
+        Alamofire.request(Urls.fatawyAnswers)
             .responseJSON{
                 
                 response in

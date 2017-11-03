@@ -18,7 +18,6 @@ class TimelineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let dateFormat: DateFormat = DateFormat(format: "dd MMMM")
     
     var timelineArray = Array<TimelineItem>()
-    let timelineUrl = "http://hegg.nakeeb.me/API/qassem/getTimeline.php"
     
     let curTimeInMillis = Date().timeIntervalSince1970
     
@@ -48,7 +47,7 @@ class TimelineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         loadtimeline()
         inittimelineTV()
-        initSpinner()
+        //initSpinner()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
         whiteNB.backgroundColor = UIColor.white
@@ -120,7 +119,7 @@ class TimelineVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        Alamofire.request(timelineUrl)
+        Alamofire.request(Urls.timeline)
             .responseJSON{
                 
                 response in

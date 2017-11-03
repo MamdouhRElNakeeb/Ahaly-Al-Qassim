@@ -24,9 +24,7 @@ class HaggTayehVC: UIViewController, CLLocationManagerDelegate {
     
     
     let margin: CGFloat = 30
-    
-    let contactMsgUrl = "http://hegg.nakeeb.me/API/qassem/tayeh.php"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -217,7 +215,7 @@ class HaggTayehVC: UIViewController, CLLocationManagerDelegate {
         print(parameters)
         
         
-        Alamofire.request(contactMsgUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.tayeh, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in

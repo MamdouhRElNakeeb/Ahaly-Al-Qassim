@@ -25,8 +25,6 @@ class FatwaVC: UIViewController {
     
     let margin: CGFloat = 15
     
-    let contactMsgUrl = "http://hegg.nakeeb.me/API/qassem/fatwaRequest.php"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -225,7 +223,7 @@ class FatwaVC: UIViewController {
         
         print(parameters)
         
-        Alamofire.request(contactMsgUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.fatwaAsk, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in

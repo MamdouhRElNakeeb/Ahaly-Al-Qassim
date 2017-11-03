@@ -15,7 +15,7 @@ class VideoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var videosTV: UITableView = UITableView()
     
     var videosArray = Array<Video>()
-    let videosUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLULt7R-fsx1GzIHTj3yaHwaL5WRwcGdr7&maxResults=30&key=AIzaSyAaKC-V6JT2M0iP6NUm3aXWkHBElCySfxQ"
+    
     
     var spinner = UIActivityIndicatorView()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -41,7 +41,7 @@ class VideoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         loadVideos()
         initVideosTV()
-        initSpinner()
+        //initSpinner()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
         whiteNB.backgroundColor = UIColor.white
@@ -112,7 +112,7 @@ class VideoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        Alamofire.request(videosUrl)
+        Alamofire.request(Urls.videos)
             .responseJSON{
                 
                 response in

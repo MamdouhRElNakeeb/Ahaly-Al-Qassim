@@ -19,7 +19,6 @@ class GalleryVC: UIViewController {
     var pictures = [CollieGalleryPicture]()
     var gallery = CollieGallery()
     
-    let galleryUrl = "http://hegg.nakeeb.me/API/qassem/"
     var galleryArray = Array<String>()
 
     override func viewDidLoad() {
@@ -41,7 +40,7 @@ class GalleryVC: UIViewController {
         
        
         initGalleryCV()
-        initSpinner()
+        //initSpinner()
         loadGallery()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
@@ -119,7 +118,7 @@ class GalleryVC: UIViewController {
             return
         }
         
-        Alamofire.request(galleryUrl + "gallery.php").responseJSON{
+        Alamofire.request(Urls.gallery).responseJSON{
             
             response in
             
@@ -133,7 +132,7 @@ class GalleryVC: UIViewController {
                 for galleryJSONObj in galleryJSONArr{
                     
                     self.galleryArray.append(galleryJSONObj as! String)
-                    self.pictures.append(CollieGalleryPicture(url: self.galleryUrl + "Gallery/" + (galleryJSONObj as! String)))
+                    self.pictures.append(CollieGalleryPicture(url: Urls.photosDir + (galleryJSONObj as! String)))
                 }
                 
                 self.galleryCV.reloadData()
@@ -157,9 +156,9 @@ extension GalleryVC: UICollectionViewDelegate, UICollectionViewDataSource, Colli
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as! GalleryCell
         
-        cell.picIV.sd_setImage(with: URL(string: galleryUrl + "Gallery/" + galleryArray[indexPath.row]), placeholderImage: UIImage(named: "logo_icon"))
+        cell.picIV.sd_setImage(with: URL(string: Urls.photosDir + galleryArray[indexPath.row]), placeholderImage: UIImage(named: "logo_icon"))
         
-        print(galleryUrl + "Gallery/" + galleryArray[indexPath.row])
+        print(Urls.photosDir + galleryArray[indexPath.row])
         
         return cell
     }

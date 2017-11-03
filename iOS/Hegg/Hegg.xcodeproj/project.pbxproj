@@ -33,6 +33,7 @@
 		336A79EF1F3DBF7C00E29AD9 /* FatwaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A79EE1F3DBF7C00E29AD9 /* FatwaCell.swift */; };
 		336A79F11F3DD53F00E29AD9 /* Fatwa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A79F01F3DD53F00E29AD9 /* Fatwa.swift */; };
 		336A79F31F3DD90F00E29AD9 /* FatwaDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A79F21F3DD90F00E29AD9 /* FatwaDetails.swift */; };
+		336D2BAD1FABFB1C001D283B /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336D2BAC1FABFB1C001D283B /* Urls.swift */; };
 		336E21931F374D7A0056DDC6 /* Camp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E21921F374D7A0056DDC6 /* Camp.swift */; };
 		337FF5E51F31110A0070A74B /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FF5E41F31110A0070A74B /* AboutVC.swift */; };
 		3388B9491F487DB400680B8B /* GuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388B9481F487DB400680B8B /* GuideVC.swift */; };
@@ -100,6 +101,7 @@
 		336A79EE1F3DBF7C00E29AD9 /* FatwaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatwaCell.swift; sourceTree = "<group>"; };
 		336A79F01F3DD53F00E29AD9 /* Fatwa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fatwa.swift; sourceTree = "<group>"; };
 		336A79F21F3DD90F00E29AD9 /* FatwaDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatwaDetails.swift; sourceTree = "<group>"; };
+		336D2BAC1FABFB1C001D283B /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		336E21921F374D7A0056DDC6 /* Camp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camp.swift; sourceTree = "<group>"; };
 		337FF5E41F31110A0070A74B /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		3388B9481F487DB400680B8B /* GuideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideVC.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				33A3CBC61F4A611F00F05234 /* MessageManager.swift */,
 				33A3CBC81F4A624C00F05234 /* SoundManager.swift */,
 				339834191F52624900E46E24 /* ViewPager.swift */,
+				336D2BAC1FABFB1C001D283B /* Urls.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				33A3CBDE1F4A64A800F05234 /* TGBaseMessageCell.swift in Sources */,
 				33A3CBE91F4A64A800F05234 /* TGTitleView.swift in Sources */,
 				33A3CBE81F4A64A800F05234 /* TGTextMessageCellLayout.swift in Sources */,
+				336D2BAD1FABFB1C001D283B /* Urls.swift in Sources */,
 				332342AA1F38A16300909D1F /* NewsVC.swift in Sources */,
 				33A3CBE31F4A64A800F05234 /* TGDateMessageCellLayout.swift in Sources */,
 				331EB6551F3A8C7C0065BA2E /* ContactVC.swift in Sources */,

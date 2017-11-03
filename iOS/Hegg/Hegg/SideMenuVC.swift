@@ -10,6 +10,8 @@ import UIKit
 
 class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var userIDTF = String()
+    
     
     let titles: [String] = [
         "الرئيسية",
@@ -160,6 +162,12 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             break
             
         case 13:
+            
+            if UserDefaults.standard.object(forKey: "userID") == nil {
+                joinUser()
+                return
+            }
+            
             var chatVC: UIViewController?
             let chat: Chat = {
                 let chat = Chat()
@@ -202,6 +210,29 @@ class SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
     }
 
+    func joinUser(){
+        
+        let alert = UIAlertController(title: "مرحباً بك", message: "أدخل الرقم التعريفى الخاص بك", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "User ID"
+            textField.keyboardType = .numberPad
+        }
+        
+        alert.addAction(UIAlertAction(title: "إدخال", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction) -> Void in
+            
+            self.userIDTF = alert.textFields![0].text!
+            print(self.userIDTF)
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(self.userIDTF, forKey: "userID")
+            userDefaults.set(true, forKey: "logged")
+            userDefaults.synchronize()
+            
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 

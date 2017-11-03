@@ -15,7 +15,6 @@ class GuideVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var guideArray = Array<GuideItem>()
-    let guideUrl = "http://hegg.nakeeb.me/API/qassem/getGuide.php"
     
     var spinner = UIActivityIndicatorView()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -38,7 +37,7 @@ class GuideVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         labelTitle.font = UIFont(name: "GE SS Two", size: 17)
         self.navigationItem.titleView = labelTitle
         
-        initSpinner()
+        //initSpinner()
         initguideTV()
         loadguide()
         
@@ -104,7 +103,7 @@ class GuideVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        Alamofire.request(guideUrl)
+        Alamofire.request(Urls.guide)
             .responseJSON{
                 
                 response in

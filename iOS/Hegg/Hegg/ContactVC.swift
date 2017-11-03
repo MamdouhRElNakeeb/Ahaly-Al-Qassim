@@ -24,7 +24,6 @@ class ContactVC: UIViewController {
     
     let margin: CGFloat = 30
     
-    let contactMsgUrl = "http://hegg.nakeeb.me/API/qassem/contactMsg.php"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -253,7 +252,7 @@ class ContactVC: UIViewController {
 
         print(parameters)
         
-        Alamofire.request(contactMsgUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.contactUS, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in

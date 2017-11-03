@@ -16,7 +16,6 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let dateFormat: DateFormat = DateFormat(format: "EEEE dd MMMM YYYY")
     
     var newsArray = Array<NewsItem>()
-    let newsUrl = "http://hegg.nakeeb.me/API/qassem/getNews.php"
     
     var spinner = UIActivityIndicatorView()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -41,7 +40,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         loadnews()
         initnewsTV()
-        initSpinner()
+        //initSpinner()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
         whiteNB.backgroundColor = UIColor.white
@@ -105,7 +104,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        Alamofire.request(newsUrl)
+        Alamofire.request(Urls.news)
             .responseJSON{
                 
                 response in

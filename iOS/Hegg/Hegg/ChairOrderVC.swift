@@ -25,7 +25,6 @@ class ChairOrderVC: UIViewController {
     
     let margin: CGFloat = 30
     
-    let contactMsgUrl = "http://hegg.nakeeb.me/API/qassem/chairOrder.php"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -229,7 +228,7 @@ class ChairOrderVC: UIViewController {
         print(parameters)
         
         
-        Alamofire.request(contactMsgUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.chairOrder, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in

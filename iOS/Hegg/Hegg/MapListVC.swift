@@ -41,12 +41,12 @@ class MapListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if mapListType {
             
             labelTitle.text = "مواقعنا بالمشاعر"
-            mapListUrl = "http://hegg.nakeeb.me/API/qassem/getCampLocations.php"
+            mapListUrl = Urls.camp
         }
         else{
             
             labelTitle.text = "أماكن التجمع"
-            mapListUrl = "http://hegg.nakeeb.me/API/qassem/getGatherLocations.php"
+            mapListUrl = Urls.gather
         }
         
         labelTitle.font = UIFont(name: "GE SS Two", size: 17)
@@ -58,7 +58,7 @@ class MapListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         loadMapList()
         initMapListTV()
-        initSpinner()
+        //initSpinner()
         
         let whiteNB = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64))
         whiteNB.backgroundColor = UIColor.white

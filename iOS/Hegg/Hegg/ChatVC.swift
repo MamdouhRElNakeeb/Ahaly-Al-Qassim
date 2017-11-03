@@ -194,13 +194,12 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
         
         layouts.removeAllObjects()
         
-        let chatUrl = "http://hegg.nakeeb.me/API/qassem/getChat.php"
         
         let parameters: Parameters=[
             "userID": UserDefaults.standard.string(forKey: "userID") ?? 1
         ]
         
-        Alamofire.request(chatUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.chatGet, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in
@@ -256,14 +255,13 @@ class ChatVC: NOCChatViewController, UINavigationControllerDelegate, MessageMana
         
         //messageManager.sendMessage(message, toChat: chat)
         
-        let chatUrl = "http://hegg.nakeeb.me/API/qassem/sendMsg.php"
         
         let parameters: Parameters=[
             "userID": message.senderId,
             "msg": message.text
         ]
         
-        Alamofire.request(chatUrl, method: .post, parameters: parameters)
+        Alamofire.request(Urls.chatSend, method: .post, parameters: parameters)
             .responseJSON{
                 
                 response in

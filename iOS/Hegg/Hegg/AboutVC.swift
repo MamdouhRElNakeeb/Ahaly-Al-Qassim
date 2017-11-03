@@ -14,9 +14,6 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
     let lat = 21.4151678
     let lon = 39.8789227
     let campName = "شركة أهالي القصيم"
-    let fbUrl = "https://www.facebook.com/peekssolutions/"
-    let twtUrl = "https://twitter.com/peekssolutions"
-    let siteUrl = "http://peekssolutions.com"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,7 +218,7 @@ class AboutVC: UIViewController, UIGestureRecognizerDelegate {
     func openSite (){
         
         UIApplication.tryURL(urls: [
-            "http://ahalyalqassim.com"
+            Urls.website
             ])
     }
     
